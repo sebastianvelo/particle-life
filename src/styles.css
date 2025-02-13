@@ -3,7 +3,7 @@ body {
   display: flex;
   flex-direction: column;
   align-content: space-between;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.96);
   color: white;
 }
 
@@ -13,7 +13,7 @@ body {
 }
 
 canvas {
-  border-radius: 4%;
+  border-radius: 5%;
 }
 
 /* Estilo para la scrollbar */

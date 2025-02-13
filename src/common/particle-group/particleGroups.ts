@@ -3,7 +3,7 @@ import { randomVelocity } from "../utils";
 import ParticleGroup, { IParticleGroup } from "./ParticleGroup";
 
 const GROUPS = 4;
-const PARTICLES = 600;
+const PARTICLES = 500;
 
 const getRandomParticleGroups = (): IParticleGroup[] => {
   const particleGroups: IParticleGroup[] = [];

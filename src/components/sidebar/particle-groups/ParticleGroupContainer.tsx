@@ -1,35 +1,23 @@
 import { IParticleGroup } from "../../../common/particle-group/ParticleGroup";
-import { IParticleRule } from "../../../common/rule/ParticleRule";
-import RuleContainer from "./RuleContainer";
+import ParticleGroupInfo from "./ParticleGroupInfo";
+import ParticleGroupInteractivity from "./ParticleGroupInteractivity";
 
 interface ParticleGroupContainerProps {
     group: IParticleGroup;
     onGroupChange: () => void;
 }
 
-const ParticleGroupContainer = ({ group, onGroupChange }: ParticleGroupContainerProps) => {
+const ParticleGroupContainer = (props: ParticleGroupContainerProps) => {
     return (
         <details>
-            <summary className="rounded font-bold text-xl cursor-pointer list-none" style={{ backgroundColor: group.color }}>
-                <p className="bg-zinc-900/80 hover:bg-zinc-900/90 h-auto w-2/3 p-2 text-left">
-                    {group.color.charAt(0).toUpperCase() + group.color.slice(1)}
+            <summary className="rounded-tr-md rounded-tl-md font-bold text-xl cursor-pointer list-none flex justify-end" style={{ backgroundColor: props.group.color }}>
+                <p className="bg-zinc-900/90 hover:bg-zinc-900/95 h-auto w-3/4 p-2 text-right">
+                    {props.group.color.charAt(0).toUpperCase() + props.group.color.slice(1)}
                 </p>
             </summary>
-            <div className="bg-black rounded-md">
-                <ul>
-                    {Object.values(group.rules).map((rule: IParticleRule) => (
-                        <RuleContainer
-                            key={rule.color}
-                            rule={rule}
-                            ownerColor={group.color}
-                            onRuleChange={onGroupChange}
-                        />
-                    ))}
-                </ul>
-                <div className="flex py-2 justify-between">
-                    <p><span className="font-bold">⚖️ Mass</span> {group.mass}</p>
-                    <p><span className="font-bold">💨 Velocity</span> {group.velocityDecay}</p>
-                </div>
+            <div className="bg-black">
+                <ParticleGroupInfo group={props.group} />
+                <ParticleGroupInteractivity group={props.group} onGroupChange={props.onGroupChange} />
             </div>
         </details>
     );
