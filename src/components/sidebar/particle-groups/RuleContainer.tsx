@@ -1,4 +1,4 @@
-import { IParticleRule } from "../../common/rule/ParticleRule";
+import { IParticleRule } from "../../../common/rule/ParticleRule";
 import InputChange from "./InputChange";
 
 interface RuleContainerProps {
@@ -20,7 +20,7 @@ const RuleContainer = ({ rule, ownerColor, onRuleChange }: RuleContainerProps) =
                 <div className="h-full w-full flex justify-center items-center text-sm font-bold bg-zinc-900/80 p-2">
                     {rule.g.toFixed(2)}
                 </div>
-                <div className="bg-gray-900/95 text-xs font-bold hidden group-hover:block group-hover:opacity-100 opacity-0 w-46 absolute left-0 -top-8 z-100 p-2 rounded-sm transition-all duration-300 ease-in-out">
+                <div className="bg-gray-900/95 text-sm font-bold hidden group-hover:block group-hover:opacity-100 opacity-0 h-full w-64 absolute left-16 top-0 z-100 p-2 rounded-sm transition-all duration-300 ease-in-out">
                     {interaction} {ownerColor} {interactionWord} {rule.color}
                 </div>
             </div>

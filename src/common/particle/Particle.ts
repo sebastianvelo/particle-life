@@ -4,8 +4,8 @@ export interface IParticle {
   vx: number;
   vy: number;
   color: string;
-  fx: number; // Fuerza acumulada en x
-  fy: number; // Fuerza acumulada en y
+  fx: number;
+  fy: number;
 }
 
 const Particle = (x: number, y: number, color: string): IParticle => ({

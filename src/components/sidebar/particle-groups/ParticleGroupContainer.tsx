@@ -1,5 +1,5 @@
-import { IParticleGroup } from "../../common/particle-group/ParticleGroup";
-import { IParticleRule } from "../../common/rule/ParticleRule";
+import { IParticleGroup } from "../../../common/particle-group/ParticleGroup";
+import { IParticleRule } from "../../../common/rule/ParticleRule";
 import RuleContainer from "./RuleContainer";
 
 interface ParticleGroupContainerProps {
@@ -11,7 +11,7 @@ const ParticleGroupContainer = ({ group, onGroupChange }: ParticleGroupContainer
     return (
         <details>
             <summary className="rounded font-bold text-xl cursor-pointer list-none" style={{ backgroundColor: group.color }}>
-                <p className="bg-zinc-900/50 hover:bg-zinc-900/70 h-full w-full p-1">
+                <p className="bg-zinc-900/80 hover:bg-zinc-900/90 h-auto w-2/3 p-2 text-left">
                     {group.color.charAt(0).toUpperCase() + group.color.slice(1)}
                 </p>
             </summary>

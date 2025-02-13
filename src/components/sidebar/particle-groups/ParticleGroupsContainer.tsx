@@ -1,5 +1,5 @@
 import { IParticleGroup } from "../../../common/particle-group/ParticleGroup"
-import ParticleGroupContainer from "../ParticleGroupContainer";
+import ParticleGroupContainer from "./ParticleGroupContainer";
 
 interface ParticleGroupsContainerProps {
     particleGroups: IParticleGroup[];
