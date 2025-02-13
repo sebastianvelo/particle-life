@@ -1,9 +1,8 @@
-import { getRandomColor } from "../color/colors";
-import { randomVelocity } from "../utils";
+import { getRandomColor, randomVelocity } from "../utils";
 import ParticleGroup, { IParticleGroup } from "./ParticleGroup";
 
 const GROUPS = 4;
-const PARTICLES = 500;
+const PARTICLES = 700;
 
 const getRandomParticleGroups = (): IParticleGroup[] => {
   const particleGroups: IParticleGroup[] = [];

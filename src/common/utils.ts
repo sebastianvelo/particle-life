@@ -1,4 +1,5 @@
 import canvasProps from "./canvas/canvasProps";
+import colors from "./color/colors";
 
 export const randomX = () =>
   Math.floor(Math.random() * (canvasProps.w / 2)) + canvasProps.w / 4;
@@ -14,3 +15,5 @@ export const randomVelocity = (): number => {
 export const randomMass = (): number => {
   return +(Math.random() + 0.5).toFixed(6);
 }
+
+export const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];

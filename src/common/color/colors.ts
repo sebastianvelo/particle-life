@@ -1,12 +1,12 @@
-export const cssColors = [
+const colors = [
     // Neutrals (achromatic)
     "black", "gray",
     // Reds and pinks:
-    "red", "maroon", "darkred", "firebrick", "crimson", "orangered", "darksalmon", "tomato", "indianred", "salmon", "coral", "lightsalmon",
+    "red", "maroon", "darkred", "firebrick", "crimson", "orangered", "tomato", "indianred", "salmon", "coral",
     // Oranges, browns:
-    "brown", "peru", "sienna", "chocolate", "saddlebrown", "burlywood", "bisque", "orange", "darkorange", "sandybrown",
+    "brown", "peru", "chocolate", "orange", "darkorange",
     // Yellows:
-    "darkgoldenrod", "goldenrod", "gold", "khaki", "palegoldenrod", "darkkhaki", "lemonchiffon", "olive", "beige", "yellow",
+    "gold", "khaki", "lemonchiffon", "olive", "yellow",
     // Greens:
     "yellowgreen", "greenyellow", "chartreuse", "lawngreen", "green", "lime", "limegreen", "darkgreen", "forestgreen", "mediumseagreen", "mediumspringgreen", "palegreen", "lightgreen",
     // Cyan / Turquoise:
@@ -16,7 +16,7 @@ export const cssColors = [
     // Violets, purples and magentas:
     "blueviolet", "rebeccapurple", "mediumpurple", "lavender", "indigo", "darkorchid", "mediumorchid", "darkviolet", "orchid", "plum", "violet", "purple", "magenta", "fuchsia", "mediumvioletred", "deeppink", "hotpink", "palevioletred", "lightpink", "pink",
     // Light neutrals:
-    "seashell", "snow", "white"
+    "white"
 ];
 
-export const getRandomColor = () => cssColors[Math.floor(Math.random() * cssColors.length)];
+export default colors;

@@ -25,7 +25,6 @@ const fillParticleGroupItems = (particleGroup: IParticleGroup) => {
 
 export const fillParticleGroups = () => {
   setRandomParticleGroups();
-  console.log(getParticleGroups().length);
   getParticleGroups().forEach((particleGroup: IParticleGroup) => {
     fillParticleGroupItems(particleGroup);
     fillParticleGroupRules(particleGroup);

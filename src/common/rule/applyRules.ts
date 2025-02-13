@@ -62,26 +62,26 @@ const applyRules = () => {
       particle.x += particle.vx;
       particle.y += particle.vy;
 
+      /*
       if (particle.x <= 0 || particle.x >= canvasProps.w) {
         particle.vx *= -1;
       }
       if (particle.y <= 0 || particle.y >= canvasProps.h) {
         particle.vy *= -1;
       }
-      /*
-     if (particle.x <= 0) {
-       particle.x = canvasProps.w * 0.95;
-     }
-     if (particle.y <= 0) {
-       particle.y = canvasProps.h * 0.95;
-     }
-     if (particle.x >= canvasProps.w) {
-       particle.x = 5;
-     }
-     if (particle.y >= canvasProps.h) {
-       particle.y = 5;
-     }
-       */
+      */
+      if (particle.x <= 0) {
+        particle.x = canvasProps.w * 0.98;
+      }
+      if (particle.y <= 0) {
+        particle.y = canvasProps.h * 0.98;
+      }
+      if (particle.x >= canvasProps.w) {
+        particle.x = 5;
+      }
+      if (particle.y >= canvasProps.h) {
+        particle.y = 5;
+      }
     });
   });
 };

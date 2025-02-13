@@ -7,9 +7,9 @@ export interface IParticleGroup {
   color: string;
   size: number;
   items: IParticle[];
-  rules: { [key: string]: IParticleRule }; // Mapa de reglas por color
   mass: number;
   velocityDecay: number;
+  rules: { [key: string]: IParticleRule }; // Mapa de reglas por color
 }
 
 const ParticleGroup = (color: string, size: number, velocityDecay: number = 0.5): IParticleGroup => ({
@@ -17,9 +17,9 @@ const ParticleGroup = (color: string, size: number, velocityDecay: number = 0.5)
   color,
   size,
   velocityDecay,
+  mass: randomMass(),
   items: [],
   rules: {},
-  mass: randomMass()
 });
 
 export default ParticleGroup;
