@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { updateParticleGroupRules } from "../../../common/particle-group/particleGroups";
+import { updateParticleGroupRules } from "../../../../common/particle-group/particleGroups";
 
 interface InputChangeProps {
     value: number;

@@ -86,7 +86,7 @@ export const cssColors = [
     //"linen",
     "magenta",
     "maroon",
-    "mediumaquamarine",
+    //"mediumaquamarine",
     "mediumblue",
     "mediumorchid",
     "mediumpurple",

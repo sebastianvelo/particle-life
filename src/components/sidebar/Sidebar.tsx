@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { IParticleGroup } from "../../common/particle-group/ParticleGroup";
 import getParticleGroups from "../../common/particle-group/particleGroups";
-import start, { fillParticleGroups } from "../../common/ParticleSimulator";
+import start, { fillParticleGroups, getStatus, toggleGameStatus } from "../../common/ParticleSimulator";
 import ParticleGroupsContainer from "./particle-groups/ParticleGroupsContainer";
 import { InfoContainer, NoteContainer } from "./wordings/Wordings";
-import { ResetWorldButton, ToggleSidebarButton } from "./buttons/Buttons";
+import ToggleSidebarButton from "./buttons/ToggleSidebarButton";
+import ResetWorldButton from "./buttons/ResetWorldButton";
+import ToggleGameStatusButton from "./buttons/ToggleGameStatusButton";
 
 start();
 
@@ -34,7 +36,10 @@ const Sidebar = () => {
                     <InfoContainer />
                     <ParticleGroupsContainer particleGroups={particleGroups} handleGroupChange={handleGroupChange} />
                     <NoteContainer />
-                    <ResetWorldButton handleReset={handleReset} />
+                    <div className="flex">
+                        <ToggleGameStatusButton />
+                        <ResetWorldButton handleReset={handleReset} />
+                    </div>
                 </div>
             </div>
         </>

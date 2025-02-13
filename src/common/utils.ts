@@ -12,5 +12,5 @@ export const randomVelocity = (): number => {
 }
 
 export const randomMass = (): number => {
-  return +(Math.random()).toFixed(4) + 1;
+  return +(Math.random() + 0.5).toFixed(6);
 }

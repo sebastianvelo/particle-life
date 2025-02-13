@@ -1,5 +1,5 @@
 import { IParticleRule } from "../../../../common/rule/ParticleRule";
-import InputChange from "../InputChange";
+import InputChange from "./InputChange";
 import RuleInfoBadge from "./RuleInfoBadge";
 
 interface RuleContainerProps {

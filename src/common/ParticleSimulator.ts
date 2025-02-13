@@ -32,14 +32,19 @@ export const fillParticleGroups = () => {
   });
 }
 
+let status = true;
+export const toggleGameStatus = () => status = !status;
+export const getStatus = () => status;
+
 const start = () => {
   fillParticleGroups();
   const update = () => {
-    applyRules();
+    if (status)
+      applyRules();
     ctx.clearRect(0, 0, canvasProps.w, canvasProps.h);
     drawInCanvas(0, 0, "#000", canvasProps.w);
     getParticleGroups().forEach((particleGroup) => {
-      particleGroup.items.forEach(drawParticle);
+      particleGroup.items.forEach((particle) => drawParticle(particle, particleGroup.mass));
     });
     requestAnimationFrame(update);
   };

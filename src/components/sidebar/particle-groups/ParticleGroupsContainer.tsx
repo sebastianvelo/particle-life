@@ -1,5 +1,5 @@
 import { IParticleGroup } from "../../../common/particle-group/ParticleGroup"
-import ParticleGroupContainer from "./ParticleGroupContainer";
+import ParticleGroupContainer from "../particle-group/ParticleGroupContainer";
 
 interface ParticleGroupsContainerProps {
     particleGroups: IParticleGroup[];
@@ -8,7 +8,7 @@ interface ParticleGroupsContainerProps {
 
 const ParticleGroupsContainer = (props: ParticleGroupsContainerProps) => {
     return (
-        <ul className="text-white space-y-4">
+        <ul className="text-white space-y-2">
             {props.particleGroups.map((group, idx) => (
                 <ParticleGroupContainer
                     key={idx}
