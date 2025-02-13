@@ -26,6 +26,10 @@ const ParticleGroupContainer = ({ group, onGroupChange }: ParticleGroupContainer
                         />
                     ))}
                 </ul>
+                <div className="flex py-2 justify-between">
+                    <p><span className="font-bold">⚖️ Mass</span> {group.mass}</p>
+                    <p><span className="font-bold">💨 Velocity</span> {group.velocityDecay}</p>
+                </div>
             </div>
         </details>
     );

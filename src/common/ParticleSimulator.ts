@@ -2,7 +2,7 @@ import ctx from "../common/canvas/canvas";
 import canvasProps from "../common/canvas/canvasProps";
 import { drawInCanvas, drawParticle } from "../common/drawing/draw";
 import getParticleGroups, { setRandomParticleGroups } from "../common/particle-group/particleGroups";
-import setRules from "../common/rule/setRules";
+import applyRules from "./rule/applyRules";
 import { IParticleGroup } from "./particle-group/ParticleGroup";
 import Particle from "./particle/Particle";
 import ParticleRule from "./rule/ParticleRule";
@@ -35,7 +35,7 @@ export const fillParticleGroups = () => {
 const start = () => {
   fillParticleGroups();
   const update = () => {
-    setRules();
+    applyRules();
     ctx.clearRect(0, 0, canvasProps.w, canvasProps.h);
     drawInCanvas(0, 0, "#000", canvasProps.w);
     getParticleGroups().forEach((particleGroup) => {

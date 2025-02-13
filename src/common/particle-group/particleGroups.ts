@@ -2,14 +2,17 @@ import { getRandomColor } from "../color/colors";
 import { randomVelocity } from "../utils";
 import ParticleGroup, { IParticleGroup } from "./ParticleGroup";
 
+const GROUPS = 4;
+const PARTICLES = 600;
+
 const getRandomParticleGroups = (): IParticleGroup[] => {
   const particleGroups: IParticleGroup[] = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < GROUPS; i++) {
     let color: string = getRandomColor();
     while (particleGroups.some(g => g.color === color)) {
       color = getRandomColor();
     }
-    particleGroups.push(ParticleGroup(color, 500, randomVelocity()));
+    particleGroups.push(ParticleGroup(color, PARTICLES, randomVelocity()));
   }
   return particleGroups.sort((pgA, pgB) => pgA.color > pgB.color ? 1 : -1);
 }

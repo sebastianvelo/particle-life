@@ -1,5 +1,6 @@
 import { IParticle } from "../particle/Particle";
 import { IParticleRule } from "../rule/ParticleRule";
+import { randomMass } from "../utils";
 
 export interface IParticleGroup {
   id: string;
@@ -7,6 +8,7 @@ export interface IParticleGroup {
   size: number;
   items: IParticle[];
   rules: { [key: string]: IParticleRule }; // Mapa de reglas por color
+  mass: number;
   velocityDecay: number;
 }
 
@@ -17,6 +19,7 @@ const ParticleGroup = (color: string, size: number, velocityDecay: number = 0.5)
   velocityDecay,
   items: [],
   rules: {},
+  mass: randomMass()
 });
 
 export default ParticleGroup;
