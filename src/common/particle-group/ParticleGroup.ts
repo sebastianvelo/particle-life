@@ -2,6 +2,7 @@ import { IParticle } from "../particle/Particle";
 import { IParticleRule } from "../rule/ParticleRule";
 
 export interface IParticleGroup {
+  id: string;
   color: string;
   size: number;
   items: IParticle[];
@@ -10,6 +11,7 @@ export interface IParticleGroup {
 }
 
 const ParticleGroup = (color: string, size: number, velocityDecay: number = 0.5): IParticleGroup => ({
+  id: (Date.now() * 100).toString(16),
   color,
   size,
   velocityDecay,

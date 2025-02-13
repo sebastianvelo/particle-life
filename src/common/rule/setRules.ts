@@ -1,6 +1,6 @@
 import canvasProps from "../canvas/canvasProps";
 import { IParticle } from "../particle/Particle";
-import particleGroups from "../particle-group/particleGroups";
+import getParticleGroups from "../particle-group/particleGroups";
 import { IParticleGroup } from "../particle-group/ParticleGroup";
 import { IParticleRule } from "./ParticleRule";
 
@@ -34,15 +34,15 @@ const createRuleBetween = (particles1: IParticle[], particles2: IParticle[], g: 
 
 const setRules = () => {
 
-  particleGroups.forEach((particleGroup) => {
+  getParticleGroups().forEach((particleGroup) => {
     particleGroup.items.forEach((particle) => {
       particle.fx = 0;
       particle.fy = 0;
     });
   });
 
-  particleGroups.forEach((particleGroup1: IParticleGroup) => {
-    particleGroups.forEach((particleGroup2: IParticleGroup) => {
+  getParticleGroups().forEach((particleGroup1: IParticleGroup) => {
+    getParticleGroups().forEach((particleGroup2: IParticleGroup) => {
       const rule = findRule(particleGroup1, particleGroup2);
       if (rule) {
         createRuleBetween(
@@ -54,7 +54,7 @@ const setRules = () => {
     });
   });
 
-  particleGroups.forEach((particleGroup) => {
+  getParticleGroups().forEach((particleGroup) => {
     particleGroup.items.forEach((particle) => {
       particle.vx = (particle.vx + particle.fx) * particleGroup.velocityDecay;
       particle.vy = (particle.vy + particle.fy) * particleGroup.velocityDecay;
