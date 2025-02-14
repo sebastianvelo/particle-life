@@ -1,12 +1,13 @@
 import { useState } from "react";
+import fillParticleGroups from "../../common/initialSettings";
 import { IParticleGroup } from "../../common/particle-group/ParticleGroup";
 import getParticleGroups from "../../common/particle-group/particleGroups";
-import start, { fillParticleGroups, getStatus, toggleGameStatus } from "../../common/ParticleSimulator";
-import ParticleGroupsContainer from "./particle-groups/ParticleGroupsContainer";
-import { InfoContainer, NoteContainer } from "./wordings/Wordings";
-import ToggleSidebarButton from "./buttons/ToggleSidebarButton";
+import start from "../../common/ParticleSimulator";
 import NewWorldButton from "./buttons/NewWorldButton";
 import ToggleGameStatusButton from "./buttons/ToggleGameStatusButton";
+import ToggleSidebarButton from "./buttons/ToggleSidebarButton";
+import ParticleGroupsContainer from "./particle-groups/ParticleGroupsContainer";
+import { InfoContainer, NoteContainer } from "./wordings/Wordings";
 
 start();
 
