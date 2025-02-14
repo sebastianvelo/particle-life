@@ -1,11 +1,11 @@
-import canvasProps from "./canvas/canvasProps";
 import colors from "./color/colors";
+import config from "./simulator.config";
 
 export const randomX = () =>
-  Math.floor(Math.random() * (canvasProps.w / 2)) + canvasProps.w / 4;
+  Math.floor(Math.random() * (config.canvas.width / 2)) + config.canvas.width / 4;
 
 export const randomY = () =>
-  Math.floor(Math.random() * (canvasProps.h / 2)) + canvasProps.h / 4;
+  Math.floor(Math.random() * (config.canvas.height / 2)) + config.canvas.height / 4;
 
 export const randomVelocity = (): number => {
   const r = Math.random();
@@ -13,7 +13,7 @@ export const randomVelocity = (): number => {
 }
 
 export const randomMass = (): number => {
-  return +(Math.random() + 0.5).toFixed(6);
+  return +(Math.random() + 0.1).toFixed(6);
 }
 
-export const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];
+export const randomColor = () => colors[Math.floor(Math.random() * colors.length)];

@@ -1,25 +1,36 @@
 import { IParticle } from "../particle/Particle";
 import { IParticleRule } from "../rule/ParticleRule";
+import config from "../simulator.config";
 import { randomMass } from "../utils";
+
+interface ParticleRules {
+  [key: string]: IParticleRule
+};
 
 export interface IParticleGroup {
   id: string;
   color: string;
-  size: number;
+  length: number;
   items: IParticle[];
+  size: number;
   mass: number;
   velocityDecay: number;
-  rules: { [key: string]: IParticleRule }; // Mapa de reglas por color
+  rules: ParticleRules;
 }
 
-const ParticleGroup = (color: string, size: number, velocityDecay: number = 0.5): IParticleGroup => ({
-  id: (Date.now() * 100).toString(16),
-  color,
-  size,
-  velocityDecay,
-  mass: randomMass(),
-  items: [],
-  rules: {},
-});
+const ParticleGroup = (color: string, length: number, velocityDecay: number): IParticleGroup => {
+  const mass = randomMass();
+  const size = mass + config.particle.minSize;
+  return ({
+    id: config.particle.generateId(),
+    color,
+    length,
+    velocityDecay,
+    mass,
+    size,
+    items: [],
+    rules: {},
+  });
+};
 
 export default ParticleGroup;

@@ -1,17 +1,15 @@
-import { getRandomColor, randomVelocity } from "../utils";
+import config from "../simulator.config";
+import { randomColor, randomVelocity } from "../utils";
 import ParticleGroup, { IParticleGroup } from "./ParticleGroup";
-
-const GROUPS = 4;
-const PARTICLES = 700;
 
 const getRandomParticleGroups = (): IParticleGroup[] => {
   const particleGroups: IParticleGroup[] = [];
-  for (let i = 0; i < GROUPS; i++) {
-    let color: string = getRandomColor();
+  for (let i = 0; i < config.particleGroups.size; i++) {
+    let color: string = randomColor();
     while (particleGroups.some(g => g.color === color)) {
-      color = getRandomColor();
+      color = randomColor();
     }
-    particleGroups.push(ParticleGroup(color, PARTICLES, randomVelocity()));
+    particleGroups.push(ParticleGroup(color, config.particleGroups.length, randomVelocity()));
   }
   return particleGroups.sort((pgA, pgB) => pgA.color > pgB.color ? 1 : -1);
 }

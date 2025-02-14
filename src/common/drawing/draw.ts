@@ -11,9 +11,9 @@ export const drawInCanvas = (
   ctx.fillRect(x, y, s, s);
 };
 
-const drawCircle = (particle: IParticle, mass: number) => {
+const drawCircle = (particle: IParticle, size: number) => {
   ctx.beginPath();
-  ctx.arc(particle.x, particle.y, mass, 0, 2 * Math.PI);
+  ctx.arc(particle.x, particle.y, size, 0, 2 * Math.PI);
   ctx.fillStyle = particle.color;
   ctx.fill();
   ctx.lineWidth = 1;
@@ -21,7 +21,7 @@ const drawCircle = (particle: IParticle, mass: number) => {
   ctx.stroke();
 };
 
-export const drawParticle = (particle: IParticle, mass: number) => {
+export const drawParticle = (particle: IParticle, size: number) => {
   //drawInCanvas(particle.x, particle.y, particle.color, 5);
-  drawCircle(particle, mass);
+  drawCircle(particle, size);
 };

@@ -11,6 +11,6 @@ export const InfoContainer = () => {
 
 export const NoteContainer = () => {
     return (
-        <p className="text-white text-sm font-medium">Note: The rules are generated randomly. However, by default, particles of the same color attract each other.</p>
+        <p className="text-white text-sm font-medium">Note: The rules are generated randomly.</p>
     );
 };

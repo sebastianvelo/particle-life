@@ -5,7 +5,7 @@ import start, { fillParticleGroups, getStatus, toggleGameStatus } from "../../co
 import ParticleGroupsContainer from "./particle-groups/ParticleGroupsContainer";
 import { InfoContainer, NoteContainer } from "./wordings/Wordings";
 import ToggleSidebarButton from "./buttons/ToggleSidebarButton";
-import ResetWorldButton from "./buttons/ResetWorldButton";
+import NewWorldButton from "./buttons/NewWorldButton";
 import ToggleGameStatusButton from "./buttons/ToggleGameStatusButton";
 
 start();
@@ -38,7 +38,7 @@ const Sidebar = () => {
                     <NoteContainer />
                     <div className="flex">
                         <ToggleGameStatusButton />
-                        <ResetWorldButton handleReset={handleReset} />
+                        <NewWorldButton handleReset={handleReset} />
                     </div>
                 </div>
             </div>
