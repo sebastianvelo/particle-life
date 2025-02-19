@@ -31,7 +31,7 @@ const fillParticleGroups = () => {
 const init = () => {
     fillParticleGroups();
     const colors = getParticleGroups().map(pg => pg.color).join(",");
-    canvas.style.borderImage = `conic-gradient(${colors}) 1`;
+    canvas.style.borderImage = `linear-gradient(${colors}) 1`;
 }
 
 export default init;

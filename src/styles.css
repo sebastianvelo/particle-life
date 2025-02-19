@@ -3,7 +3,7 @@ body {
   display: flex;
   flex-direction: column;
   align-content: space-between;
-  background-color: rgba(0, 0, 0, 0.96);
+  background-color: rgba(0, 0, 0, 0.95);
   color: white;
 }
 
@@ -13,7 +13,6 @@ body {
 }
 
 canvas {
-  border: 3px dashed transparent;
 }
 
 /* Estilo para la scrollbar */

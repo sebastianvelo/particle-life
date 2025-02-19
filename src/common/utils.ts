@@ -2,10 +2,10 @@ import colors from "./color/colors";
 import config from "./simulator.config";
 
 export const randomX = () =>
-  Math.floor(Math.random() * (config.canvas.width / 2)) + config.canvas.width / 4;
+  Math.floor(Math.random() * (config.canvas.width / 3)) + config.canvas.width / 3;
 
 export const randomY = () =>
-  Math.floor(Math.random() * (config.canvas.height / 2)) + config.canvas.height / 4;
+  Math.floor(Math.random() * (config.canvas.height / 3)) + config.canvas.height / 3;
 
 export const randomVelocity = (): number => {
   const r = Math.random();

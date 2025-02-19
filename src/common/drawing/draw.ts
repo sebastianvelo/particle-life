@@ -1,14 +1,24 @@
 import ctx from "../canvas/canvas";
 import { IParticle } from "../particle/Particle";
 
-export const drawInCanvas = (
+export const drawRectangle = (
+  x: number,
+  y: number,
+  color: string,
+  w: number,
+  h: number
+) => {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, w, h);
+};
+
+export const drawSquare = (
   x: number,
   y: number,
   color: string,
   s: number
 ) => {
-  ctx.fillStyle = color;
-  ctx.fillRect(x, y, s, s);
+  drawRectangle(x, y, color, s, s);
 };
 
 const drawCircle = (particle: IParticle, size: number) => {
