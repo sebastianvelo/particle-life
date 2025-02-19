@@ -1,8 +1,7 @@
-import { IParticleGroup } from "../../../common/particle-group/ParticleGroup"
-import ParticleGroupContainer from "../particle-group/ParticleGroupContainer";
+import ParticleGroupContainer, { ParticleGroupContainerViewProps } from "../particle-group/ParticleGroupContainer";
 
 interface ParticleGroupsContainerProps {
-    particleGroups: IParticleGroup[];
+    particleGroups: ParticleGroupContainerViewProps[];
     handleGroupChange: () => void
 }
 
@@ -12,7 +11,7 @@ const ParticleGroupsContainer = (props: ParticleGroupsContainerProps) => {
             {props.particleGroups.map((group, idx) => (
                 <ParticleGroupContainer
                     key={idx}
-                    group={group}
+                    {...group}
                     onGroupChange={props.handleGroupChange}
                 />
             ))}

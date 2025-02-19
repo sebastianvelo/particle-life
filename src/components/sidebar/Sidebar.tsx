@@ -1,27 +1,27 @@
 import { useState } from "react";
-import fillParticleGroups from "../../common/initialSettings";
-import { IParticleGroup } from "../../common/particle-group/ParticleGroup";
-import getParticleGroups from "../../common/particle-group/particleGroups";
+import init from "../../common/initialSettings";
 import start from "../../common/ParticleSimulator";
+import getParticleGroupsView from "../transformer/particleGroupsViewTransformer";
 import NewWorldButton from "./buttons/NewWorldButton";
 import ToggleGameStatusButton from "./buttons/ToggleGameStatusButton";
 import ToggleSidebarButton from "./buttons/ToggleSidebarButton";
+import { ParticleGroupContainerViewProps } from "./particle-group/ParticleGroupContainer";
 import ParticleGroupsContainer from "./particle-groups/ParticleGroupsContainer";
 import { InfoContainer, NoteContainer } from "./wordings/Wordings";
 
 start();
 
 const Sidebar = () => {
-    const [particleGroups, setParticleGroups] = useState<IParticleGroup[]>(getParticleGroups());
+    const [particleGroups, setParticleGroups] = useState<ParticleGroupContainerViewProps[]>(getParticleGroupsView());
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const handleReset = () => {
-        fillParticleGroups();
-        setParticleGroups([...getParticleGroups()]);
+        init();
+        setParticleGroups([...getParticleGroupsView()]);
     };
 
     const handleGroupChange = () => {
-        setParticleGroups([...getParticleGroups()]);
+        setParticleGroups([...getParticleGroupsView()]);
     };
 
     const toggleSidebar = () => {

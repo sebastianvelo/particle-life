@@ -13,7 +13,7 @@ export const randomVelocity = (): number => {
 }
 
 export const randomMass = (): number => {
-  return +(Math.random() + 0.1).toFixed(6);
+  return Math.random() * 0.2 + 0.8;//1; //+(Math.random() + 0.1).toFixed(6);
 }
 
 export const randomColor = () => colors[Math.floor(Math.random() * colors.length)];

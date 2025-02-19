@@ -13,7 +13,7 @@ body {
 }
 
 canvas {
-  border-radius: 5%;
+  border: 3px dashed transparent;
 }
 
 /* Estilo para la scrollbar */

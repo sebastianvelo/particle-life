@@ -1,9 +1,8 @@
-import { IParticleGroup } from "../../../common/particle-group/ParticleGroup";
-import { IParticleRule } from "../../../common/rule/ParticleRule";
-import RuleContainer from "./rule/RuleContainer";
+import RuleContainer, { RuleContainerProps, RuleViewProps } from "./rule/RuleContainer";
 
 interface ParticleGroupInteractivityProps {
-    group: IParticleGroup;
+    ownerColor: string;
+    rules: RuleViewProps[];
     onGroupChange: () => void;
 };
 
@@ -12,11 +11,11 @@ const ParticleGroupInteractivity = (props: ParticleGroupInteractivityProps) => {
         <div>
             <h2 className="text-sm font-bold py-2">Interactivity</h2>
             <ul>
-                {Object.values(props.group.rules).map((rule: IParticleRule) => (
+                {props.rules.map((rule: RuleViewProps) => (
                     <RuleContainer
                         key={rule.color}
-                        rule={rule}
-                        ownerColor={props.group.color}
+                        {...rule}
+                        ownerColor={props.ownerColor}
                         onRuleChange={props.onGroupChange}
                     />
                 ))}

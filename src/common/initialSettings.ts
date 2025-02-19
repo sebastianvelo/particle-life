@@ -1,3 +1,4 @@
+import { canvas } from "./canvas/canvas";
 import { IParticleGroup } from "./particle-group/ParticleGroup";
 import getParticleGroups, { setRandomParticleGroups } from "./particle-group/particleGroups";
 import Particle from "./particle/Particle";
@@ -27,4 +28,10 @@ const fillParticleGroups = () => {
     });
 };
 
-export default fillParticleGroups;
+const init = () => {
+    fillParticleGroups();
+    const colors = getParticleGroups().map(pg => pg.color).join(",");
+    canvas.style.borderImage = `conic-gradient(${colors}) 1`;
+}
+
+export default init;

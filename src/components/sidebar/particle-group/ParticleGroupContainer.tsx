@@ -1,23 +1,28 @@
-import { IParticleGroup } from "../../../common/particle-group/ParticleGroup";
-import ParticleGroupInfo from "./ParticleGroupInfo";
+import ParticleGroupInfo, { ParticleGroupInfoProps } from "./ParticleGroupInfo";
 import ParticleGroupInteractivity from "./ParticleGroupInteractivity";
+import { RuleViewProps } from "./rule/RuleContainer";
 
-interface ParticleGroupContainerProps {
-    group: IParticleGroup;
+export interface ParticleGroupContainerViewProps {
+    name: string;
+    info: ParticleGroupInfoProps;
+    rules: RuleViewProps[];
+}
+
+export interface ParticleGroupContainerProps extends ParticleGroupContainerViewProps {
     onGroupChange: () => void;
 }
 
 const ParticleGroupContainer = (props: ParticleGroupContainerProps) => {
     return (
         <details>
-            <summary className="rounded-tr-md rounded-tl-md font-bold text-xl cursor-pointer list-none flex justify-end" style={{ backgroundColor: props.group.color }}>
+            <summary className="rounded-tr-md rounded-tl-md font-bold text-xl cursor-pointer list-none flex justify-end" style={{ backgroundColor: props.name }}>
                 <p className="bg-zinc-900/50 hover:bg-zinc-900/95 h-auto w-3/4 p-2 text-right">
-                    {props.group.color.charAt(0).toUpperCase() + props.group.color.slice(1)}
+                    {props.name}
                 </p>
             </summary>
             <div className="bg-black">
-                <ParticleGroupInfo group={props.group} />
-                <ParticleGroupInteractivity group={props.group} onGroupChange={props.onGroupChange} />
+                <ParticleGroupInfo {...props.info} />
+                <ParticleGroupInteractivity ownerColor={props.name} rules={props.rules} onGroupChange={props.onGroupChange} />
             </div>
         </details>
     );

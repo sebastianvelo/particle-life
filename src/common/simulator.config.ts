@@ -1,11 +1,11 @@
 const config = {
     particleGroups: {
-        size: 5,
-        length: 800
+        size: 4,
+        length: 700
     },
     particle: {
         generateId: () => (Date.now() * 100).toString(16),
-        minSize: 0.5
+        minSize: 0.0
     },
     canvas: {
         id: "life",
