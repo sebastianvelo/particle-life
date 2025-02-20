@@ -12,8 +12,9 @@ export const getStatus = () => status;
 const start = () => {
   init();
   const update = () => {
-    if (status)
+    if (status) {
       moveParticles();
+    }
     ctx.clearRect(0, 0, config.canvas.width, config.canvas.height);
     drawRectangle(0, 0, config.canvas.bgColor, config.canvas.width, config.canvas.height);
     getParticleGroups().forEach((particleGroup) => {

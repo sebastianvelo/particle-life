@@ -28,10 +28,14 @@ const fillParticleGroups = () => {
     });
 };
 
-const init = () => {
-    fillParticleGroups();
+const changeCanvasBorder = () => {
     const colors = getParticleGroups().map(pg => pg.color).join(",");
     canvas.style.borderImage = `linear-gradient(${colors}) 1`;
+};
+
+const init = () => {
+    fillParticleGroups();
+    changeCanvasBorder();
 }
 
 export default init;
