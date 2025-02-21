@@ -5,7 +5,7 @@ const config = {
     },
     particle: {
         generateId: () => (Date.now() * 100).toString(16),
-        minSize: 0.0
+        minSize: 0.8
     },
     canvas: {
         id: "life",
