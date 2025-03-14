@@ -99,7 +99,7 @@ particle-life/
 ```
 
 - **components/**: Contains all the React components.
-- **canvas/**: Holds the logic to render and animate particles using HTML canvas.
+- **common/**: Holds the logic to render and animate particles using HTML canvas.
 - **styles/**: Includes Tailwind configuration and any custom CSS.
 
 ---
@@ -110,24 +110,6 @@ particle-life/
 - **TypeScript**: For type safety and improved developer experience.
 - **Tailwind CSS**: For rapid styling with utility-first CSS classes.
 - **HTML Canvas**: For rendering the particle animations.
-
----
-
-## Contributing
-
-Contributions are welcome! If you have ideas for improvements or new features:
-
-1. Fork the repository.
-2. Create a new branch for your feature or fix.
-3. Submit a pull request with a detailed explanation of your changes.
-
-Please follow the existing coding style and include tests for any new features.
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ---
 
