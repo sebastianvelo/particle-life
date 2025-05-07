@@ -113,9 +113,4 @@ particle-life/
 
 ---
 
-## Acknowledgements
-
-- Thanks to the open-source community for providing incredible tools and libraries.
-- Inspired by interactive particle simulations and generative art.
-
 Enjoy exploring **Particle Life** and have fun creating mesmerizing particle patterns!
