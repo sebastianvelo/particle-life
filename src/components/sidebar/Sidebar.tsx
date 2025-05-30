@@ -1,15 +1,13 @@
-import { useState } from "react";
 import init from "@game/initialSettings";
-import start from "@game/ParticleSimulator";
-import getParticleGroupsView from "../transformer/particleGroupsViewTransformer";
+import { useState } from "react";
+import getParticleGroupsView from "../../game/transformer/particleGroupsViewTransformer";
 import NewWorldButton from "./buttons/NewWorldButton";
 import ToggleGameStatusButton from "./buttons/ToggleGameStatusButton";
 import ToggleSidebarButton from "./buttons/ToggleSidebarButton";
 import { ParticleGroupContainerViewProps } from "./particle-group/ParticleGroupContainer";
 import ParticleGroupsContainer from "./particle-groups/ParticleGroupsContainer";
-import { InfoContainer, NoteContainer } from "./wordings/Wordings";
-
-start();
+import InfoContainer from "./wordings/InfoContainer";
+import NoteContainer from "./wordings/NoteContainer";
 
 const Sidebar = () => {
     const [particleGroups, setParticleGroups] = useState<ParticleGroupContainerViewProps[]>(getParticleGroupsView());

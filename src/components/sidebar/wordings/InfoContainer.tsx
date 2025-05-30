@@ -1,4 +1,4 @@
-export const InfoContainer = () => {
+const InfoContainer: React.FC = () => {
     return (
         <div className="text-justify space-y-4 px-4">
             <p className="text-white text-lg font-medium">
@@ -9,8 +9,4 @@ export const InfoContainer = () => {
     );
 };
 
-export const NoteContainer = () => {
-    return (
-        <p className="text-white text-sm font-medium">Note: The rules are generated randomly.</p>
-    );
-};
+export default InfoContainer;

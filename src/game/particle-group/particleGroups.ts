@@ -10,7 +10,6 @@ const getRandomParticleGroups = (): IParticleGroup[] => {
 
   for (let i = 0; i < totalGroups; i++) {
     let color = randomColor();
-    // Asegurarse de que el color es único
     while (usedColors.has(color)) {
       color = randomColor();
     }
@@ -18,7 +17,6 @@ const getRandomParticleGroups = (): IParticleGroup[] => {
     particleGroups.push(ParticleGroupImpl(color));
   }
 
-  // Ordenar los grupos por color de forma lexicográfica
   return particleGroups.sort((a, b) => a.color.localeCompare(b.color));
 }
 
