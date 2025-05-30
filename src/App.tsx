@@ -1,5 +1,5 @@
 import Sidebar from "./components/sidebar/Sidebar";
-import "./styles.css";
+import "./output.css";
 
 export default function App() {
 
