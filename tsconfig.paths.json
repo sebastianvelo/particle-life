@@ -1,7 +1,8 @@
 {
-    "compilerOptions": {
-        "baseUrl": "./src",
-        "paths": {
-        }
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@game/*": ["game/*"]
     }
+  }
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getStatus, toggleGameStatus } from "../../../common/ParticleSimulator";
+import { getStatus, toggleGameStatus } from "@game/ParticleSimulator";
 
 const ToggleGameStatusButton = () => {
     const [isActive, setIsActive] = useState<boolean>(getStatus());

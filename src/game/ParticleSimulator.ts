@@ -1,6 +1,6 @@
-import ctx from "../common/canvas/canvas";
-import { drawParticle, drawRectangle } from "../common/drawing/draw";
-import getParticleGroups from "../common/particle-group/particleGroups";
+import ctx from "./canvas/canvas";
+import { drawParticle, drawRectangle } from "./drawing/draw";
+import getParticleGroups from "./particle-group/particleGroups";
 import moveParticles from "./behavior/moveParticles";
 import init from "./initialSettings";
 import config from "./simulator.config";

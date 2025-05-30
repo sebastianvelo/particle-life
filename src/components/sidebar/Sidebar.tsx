@@ -1,6 +1,6 @@
 import { useState } from "react";
-import init from "../../common/initialSettings";
-import start from "../../common/ParticleSimulator";
+import init from "@game/initialSettings";
+import start from "@game/ParticleSimulator";
 import getParticleGroupsView from "../transformer/particleGroupsViewTransformer";
 import NewWorldButton from "./buttons/NewWorldButton";
 import ToggleGameStatusButton from "./buttons/ToggleGameStatusButton";

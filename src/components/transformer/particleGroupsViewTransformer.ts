@@ -1,5 +1,5 @@
-import { IParticleGroup } from "../../common/particle-group/ParticleGroup";
-import getParticleGroups from "../../common/particle-group/particleGroups";
+import { IParticleGroup } from "@game/particle-group/ParticleGroup";
+import getParticleGroups from "@game/particle-group/particleGroups";
 
 const transformParticleGroup = (group: IParticleGroup) => {
     const name = group.color;//.charAt(0).toUpperCase() + group.color.slice(1);
