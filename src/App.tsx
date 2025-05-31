@@ -3,7 +3,7 @@ import React from 'react';
 import AnimatedBackground from './components/background/AnimatedBackground';
 import GameCanvas from './components/canvas/GameCanvas';
 import MobileControlPanel from './components/controls/MobileControlPanel';
-import ToggleButton from './components/controls/ToggleButton';
+import ToggleSidebarButton from './components/buttons/ToggleSidebarButton';
 import Sidebar from './components/sidebar/Sidebar';
 import { useParticleSimulation } from './hooks/useParticleSimulation';
 import { useUIState } from './hooks/useUIState';
@@ -32,7 +32,7 @@ const App: React.FC = () => {
     <div className="h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 relative overflow-hidden">
       <AnimatedBackground />
       <GameCanvas isOpen={isOpen} canvasReady={canvasReady}  />
-      <ToggleButton isOpen={isOpen} onToggle={toggleSidebar} />
+      <ToggleSidebarButton isOpen={isOpen} onToggle={toggleSidebar} />
       <MobileControlPanel
         isPlaying={isPlaying}
         onTogglePlayPause={togglePlayPause}

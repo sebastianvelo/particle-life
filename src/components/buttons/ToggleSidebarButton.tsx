@@ -1,11 +1,11 @@
 import { ChevronDown, ChevronRight } from "lucide-react";
 
-interface ToggleButtonProps {
+interface ToggleSidebarButtonProps {
     onToggle: () => void;
     isOpen: boolean;
 }
 
-const ToggleButton: React.FC<ToggleButtonProps> = ({ onToggle, isOpen }) => {
+const ToggleSidebarButton: React.FC<ToggleSidebarButtonProps> = ({ onToggle, isOpen }) => {
     return (
         <button className="fixed top-4 left-6 z-50 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-2 hover:bg-white/20 transition-all duration-300 shadow-lg group" onClick={onToggle}>
             {isOpen ? (
@@ -17,4 +17,4 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({ onToggle, isOpen }) => {
     )
 };
 
-export default ToggleButton;
+export default ToggleSidebarButton;

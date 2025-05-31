@@ -35,7 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             <div className="flex-1 overflow-y-auto p-6 space-y-4 scrollbar">
                 {particleGroups.map((group, groupIndex) => (
                     <ParticleGroup
-                        engine={engine}
+                        updateGroupRule={engine.updateGroupRule.bind(engine)}
                         key={group.name}
                         group={group}
                         groupIndex={groupIndex}

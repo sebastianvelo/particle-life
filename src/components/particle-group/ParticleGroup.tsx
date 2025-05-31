@@ -36,7 +36,7 @@ interface ParticleGroupProps {
     hoveredRule: string | null;
     onToggleExpansion: () => void;
     onRuleHover: (ruleId: string | null) => void;
-    engine: Engine;
+    updateGroupRule: (fromColor: string, toColor: string, newValue: number) => number;
 }
 
 const ParticleGroup: React.FC<ParticleGroupProps> = ({
@@ -46,7 +46,7 @@ const ParticleGroup: React.FC<ParticleGroupProps> = ({
     hoveredRule,
     onToggleExpansion,
     onRuleHover,
-    engine
+    updateGroupRule
 }) => {
     return (
         <div className="bg-white/5 rounded-xl border border-white/10 overflow-hidden hover:bg-white/10 transition-all duration-300">
@@ -87,7 +87,7 @@ const ParticleGroup: React.FC<ParticleGroupProps> = ({
                             hoveredRule={hoveredRule}
                             onMouseEnter={() => onRuleHover(`${groupIndex}-${ruleIndex}`)}
                             onMouseLeave={() => onRuleHover(null)}
-                            engine={engine}
+                            updateGroupRule={updateGroupRule}
                         />
                     ))}
                 </div>

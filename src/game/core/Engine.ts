@@ -12,7 +12,7 @@ class Engine {
   private isInitialized: boolean;
 
   constructor() {
-    this.renderer = new CanvasRenderer(config); // Fallback para compatibilidad
+    this.renderer = new CanvasRenderer(config);
     this.groupManager = new ParticleGroupManager();
     this.physicsEngine = new PhysicsEngine();
     this.status = true;
@@ -36,7 +36,7 @@ class Engine {
       console.warn('Engine not initialized. Use setCanvas() first or ensure canvas element exists.');
       return;
     }
-    
+
     this.groupManager.fillParticleGroups();
     this.gameLoop();
   }
@@ -81,7 +81,7 @@ class Engine {
       console.warn('Engine not initialized. Cannot restart.');
       return;
     }
-    
+
     this.groupManager.fillParticleGroups();
     if (!this.status) {
       this.start();
@@ -94,7 +94,7 @@ class Engine {
   private gameLoop(): void {
     const update = () => {
       if (!this.isInitialized) return;
-      
+
       if (this.status) {
         const groups = this.groupManager.getParticleGroups();
         this.physicsEngine.updatePhysics(groups);
@@ -113,13 +113,13 @@ class Engine {
    */
   private render(): void {
     if (!this.isInitialized) return;
-    
+
     this.renderer.clear();
     this.renderer.drawRectangle(
-      0, 
-      0, 
-      config.canvas.bgColor, 
-      config.canvas.width, 
+      0,
+      0,
+      config.canvas.bgColor,
+      config.canvas.width,
       config.canvas.height
     );
 
@@ -131,7 +131,7 @@ class Engine {
    */
   private renderParticles(): void {
     const particleGroups = this.groupManager.getParticleGroups();
-    
+
     particleGroups.forEach((particleGroup) => {
       particleGroup.items.forEach((particle) => {
         this.renderer.drawParticle(particle, particleGroup.size);
@@ -180,7 +180,7 @@ class Engine {
    */
   public updateCanvasSize(width: number, height: number): void {
     if (!this.isInitialized) return;
-    
+
     const canvas = this.renderer.getCanvas();
     canvas.width = width;
     canvas.height = height;
@@ -203,7 +203,8 @@ class Engine {
   /**
    * Método de utilidad para actualizar reglas entre grupos
    */
-  public updateGroupRule(fromColor: string, toColor: string, newValue: number): boolean {
+  public updateGroupRule(fromColor: string, toColor: string, newValue: number): number {
+    console.log(fromColor, toColor, newValue)
     return this.groupManager.updateParticleGroupRules(fromColor, toColor, newValue);
   }
 }

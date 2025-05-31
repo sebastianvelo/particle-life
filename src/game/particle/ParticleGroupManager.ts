@@ -170,21 +170,21 @@ class ParticleGroupManager {
     /**
      * Actualiza las reglas de un grupo específico
      */
-    public updateParticleGroupRules(fromColor: string, toColor: string, newValue: number): boolean {
+    public updateParticleGroupRules(fromColor: string, toColor: string, newValue: number): number {
         const group = this.getParticleGroupByColor(fromColor);
 
         if (!group) {
             console.warn(`Grupo con color ${fromColor} no encontrado`);
-            return false;
+            return -1;
         }
 
         if (!group.rules[toColor]) {
             console.warn(`Regla hacia ${toColor} no existe en el grupo ${fromColor}`);
-            return false;
+            return -1;
         }
 
         group.rules[toColor].g = newValue;
-        return true;
+        return newValue;
     }
 
     /**

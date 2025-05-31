@@ -1,8 +1,6 @@
-import Engine from '@game/core/Engine';
 import React from 'react';
 
 interface InteractionRuleProps {
-    engine: Engine;
     rule: {
         color: string;
         g: string;
@@ -17,6 +15,7 @@ interface InteractionRuleProps {
     hoveredRule: string | null;
     onMouseEnter: () => void;
     onMouseLeave: () => void;
+    updateGroupRule: (fromColor: string, toColor: string, newValue: number) => number;
 }
 
 const InteractionRule: React.FC<InteractionRuleProps> = ({
@@ -27,21 +26,14 @@ const InteractionRule: React.FC<InteractionRuleProps> = ({
     hoveredRule,
     onMouseEnter,
     onMouseLeave,
-    engine
+    updateGroupRule
 }) => {
     const isHovered = hoveredRule === `${groupIndex}-${ruleIndex}`;
 
     return (
-        <div
-            className="bg-white/5 rounded-lg p-3 border border-white/10 hover:bg-white/10 transition-all duration-200"
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-        >
+        <div className="bg-white/5 rounded-lg p-3 border border-white/10 hover:bg-white/10 transition-all duration-200" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
             <div className="flex items-center gap-3 mb-3">
-                <div
-                    className="w-5 h-5 rounded border border-white/30 flex items-center justify-center text-xs"
-                    style={{ backgroundColor: rule.color }}
-                >
+                <div className="w-5 h-5 rounded border border-white/30 flex items-center justify-center text-xs" style={{ backgroundColor: rule.color }}>
                     {rule.interaction.emoji}
                 </div>
                 <div className="flex-1">
@@ -66,13 +58,10 @@ const InteractionRule: React.FC<InteractionRuleProps> = ({
                         max="0.99"
                         step="0.05"
                         value={parseFloat(rule.g)}
-                        onChange={(e) => engine.updateGroupRule(rule.color, groupName, parseFloat(e.target.value))}
+                        onChange={(e) => updateGroupRule(rule.color, groupName, parseFloat(e.target.value))}
                         className="w-full h-2 bg-gradient-to-r from-blue-500 via-gray-400 to-red-500 rounded-lg appearance-none cursor-pointer slider"
                         style={{
-                            background: `linear-gradient(to right, 
-                #3b82f6 0%, 
-                #6b7280 ${((parseFloat(rule.g) + 1) / 2) * 100}%, 
-                #ef4444 100%)`
+                            background: `linear-gradient(to right,  #3b82f6 0%,  #6b7280 ${((parseFloat(rule.g) + 1) / 2) * 100}%,  #ef4444 100%)`
                         }}
                     />
                     <div

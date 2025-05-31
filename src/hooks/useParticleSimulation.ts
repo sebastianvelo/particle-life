@@ -41,7 +41,6 @@ export const useParticleSimulation = () => {
             initializeGroups();
         }
 
-        // Cleanup cuando el componente se desmonte
         return () => {
             engine.stop();
         };
