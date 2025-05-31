@@ -10,34 +10,15 @@ import { useUIState } from './hooks/useUIState';
 import "./output.css";
 
 const App: React.FC = () => {
-  const {
-    particleGroups,
-    isPlaying,
-    handleReset,
-    togglePlayPause,
-    canvasReady,
-    engine
-  } = useParticleSimulation();
-
-  const {
-    isOpen,
-    expandedGroups,
-    hoveredRule,
-    toggleSidebar,
-    toggleGroupExpansion,
-    setRuleHover
-  } = useUIState();
+  const { particleGroups, isPlaying, handleReset, togglePlayPause, canvasReady, updateGroupRule } = useParticleSimulation();
+  const { isOpen, expandedGroups, hoveredRule, toggleSidebar, toggleGroupExpansion, setRuleHover } = useUIState();
 
   return (
     <div className="h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 relative overflow-hidden">
       <AnimatedBackground />
-      <GameCanvas isOpen={isOpen} canvasReady={canvasReady}  />
+      <GameCanvas isOpen={isOpen} canvasReady={canvasReady} />
       <ToggleSidebarButton isOpen={isOpen} onToggle={toggleSidebar} />
-      <MobileControlPanel
-        isPlaying={isPlaying}
-        onTogglePlayPause={togglePlayPause}
-        onReset={handleReset}
-      />
+      <MobileControlPanel isPlaying={isPlaying} onTogglePlayPause={togglePlayPause} onReset={handleReset} />
       <Sidebar
         isOpen={isOpen}
         particleGroups={particleGroups}
@@ -48,7 +29,7 @@ const App: React.FC = () => {
         onRuleHover={setRuleHover}
         onTogglePlayPause={togglePlayPause}
         onReset={handleReset}
-        engine={engine}
+        updateGroupRule={updateGroupRule}
       />
       <Footer />
     </div>

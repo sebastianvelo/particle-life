@@ -34,6 +34,12 @@ export const useParticleSimulation = () => {
         }
     }, []);
 
+    const updateGroupRule = useCallback((fromColor: string, toColor: string, newValue: number) => {
+        const val = engine.updateGroupRule(fromColor, toColor, newValue);
+        setParticleGroups([...getParticleGroupsView(engine)]);
+        return val;
+    }, []);
+
     const canvasReady = useCallback((canvasRef: React.RefObject<HTMLCanvasElement>) => {
         if (canvasRef.current) {
             engine.setCanvas(canvasRef.current);
@@ -48,6 +54,7 @@ export const useParticleSimulation = () => {
 
     return {
         particleGroups,
+        updateGroupRule,
         isPlaying,
         handleReset,
         handleGroupChange,

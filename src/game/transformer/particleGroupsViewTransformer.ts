@@ -35,8 +35,7 @@ const transformParticleGroup = (group: ParticleGroup) => {
     };
 };
 
-const transformAllParticleGroups = (groups: ParticleGroup[]) =>
-    groups.map(transformParticleGroup);
+const transformAllParticleGroups = (groups: ParticleGroup[]) => groups.map(transformParticleGroup);
 
 const getParticleGroupsView = (engine: Engine) => transformAllParticleGroups(engine.getGroupManager().getParticleGroups());
 

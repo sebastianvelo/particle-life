@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 
 export const useUIState = () => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState<boolean>(true);
     const [expandedGroups, setExpandedGroups] = useState<Set<number>>(new Set([]));
     const [hoveredRule, setHoveredRule] = useState<string | null>(null);
 

@@ -5,7 +5,6 @@ import DesktopControlPanel from '../controls/DesktopControlPanel';
 import ParticleGroup, { ParticleGroupContainerViewProps } from '../particle-group/ParticleGroup';
 
 interface SidebarProps {
-    engine: Engine;
     isOpen: boolean;
     particleGroups: ParticleGroupContainerViewProps[];
     expandedGroups: Set<number>;
@@ -15,6 +14,7 @@ interface SidebarProps {
     onRuleHover: (ruleId: string | null) => void;
     onTogglePlayPause: () => void;
     onReset: () => void;
+    updateGroupRule: (fromColor: string, toColor: string, newValue: number) => number;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
@@ -27,15 +27,15 @@ const Sidebar: React.FC<SidebarProps> = ({
     onRuleHover,
     onTogglePlayPause,
     onReset,
-    engine
+    updateGroupRule
 }) => {
     return (
-        <div className={`fixed left-0 top-0 h-full w-96 bg-black/80 backdrop-blur-xl border-r border-white/10 transform transition-all duration-500 ease-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} z-30 shadow-2xl`}>
+        <div className={`fixed left-0 top-0 h-full w-96 bg-black/80 backdrop-blur-xl transform transition-all duration-500 ease-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} z-30 shadow-2xl`}>
             <SidebarHeader />
             <div className="flex-1 overflow-y-auto p-6 space-y-4 scrollbar">
                 {particleGroups.map((group, groupIndex) => (
                     <ParticleGroup
-                        updateGroupRule={engine.updateGroupRule.bind(engine)}
+                        updateGroupRule={updateGroupRule}
                         key={group.name}
                         group={group}
                         groupIndex={groupIndex}
