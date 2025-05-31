@@ -1,0 +1,17 @@
+const contacts = [
+    {
+        "id": "linkedin",
+        "name": "LinkedIn",
+        "image": "https://github.com/SebastianVelo/portfolio-static/blob/main/img/contact/linkedin.png?raw=true",
+        "url": "https://www.linkedin.com/in/sebastian-velo/"
+    },
+    {
+        "id": "github",
+        "name": "Github",
+        "color": "bg-gradient-to-r hover:from-gray-100 hover:via-gray-200 hover:to-gray-100",
+        "image": "https://github.com/SebastianVelo/portfolio-static/blob/main/img/contact/github.png?raw=true",
+        "url": "https://github.com/sebastianvelo"
+    }
+];
+
+export default contacts;

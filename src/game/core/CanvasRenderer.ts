@@ -1,17 +1,36 @@
+// CanvasRenderer.ts (Modificado)
 import { SimulatorConfig } from "@game/config/simulator.config";
 import { IParticle } from "../particle/Particle";
 
 class CanvasRenderer {
   private canvas: HTMLCanvasElement;
-  private ctx: CanvasRenderingContext2D;
+  private ctx?: CanvasRenderingContext2D;
 
-  constructor(config: SimulatorConfig) {
-    this.canvas = document.getElementById(config.canvas.id) as HTMLCanvasElement;
-
-    if (!this.canvas) {
-      throw new Error(`Canvas element with id '${config.canvas.id}' not found`);
+  constructor(config: SimulatorConfig, canvas?: HTMLCanvasElement) {
+    if (canvas) {
+      this.canvas = canvas;
+    } else {
+      this.canvas = document.getElementById(config.canvas.id) as HTMLCanvasElement;
     }
 
+    if (this.canvas) {
+      this.canvas.width = config.canvas.width;
+      this.canvas.height = config.canvas.height;
+
+      const context = this.canvas.getContext("2d");
+      if (!context) {
+        throw new Error("Could not get 2D context from canvas");
+      }
+
+      this.ctx = context;
+    }
+  }
+
+  /**
+   * Método para establecer un nuevo canvas (útil para React)
+   */
+  public setCanvas(canvas: HTMLCanvasElement, config: SimulatorConfig): void {
+    this.canvas = canvas;
     this.canvas.width = config.canvas.width;
     this.canvas.height = config.canvas.height;
 
@@ -27,6 +46,7 @@ class CanvasRenderer {
    * Dibuja un rectángulo en el canvas
    */
   public drawRectangle(x: number, y: number, color: string, w: number, h: number): void {
+    if(!this.ctx) return;
     this.ctx.fillStyle = color;
     this.ctx.fillRect(x, y, w, h);
   }
@@ -42,6 +62,7 @@ class CanvasRenderer {
    * Dibuja un círculo para una partícula
    */
   private drawCircle(particle: IParticle, size: number): void {
+    if(!this.ctx) return;
     this.ctx.beginPath();
     this.ctx.arc(particle.x, particle.y, size, 0, 2 * Math.PI);
     this.ctx.fillStyle = particle.color;
@@ -62,6 +83,7 @@ class CanvasRenderer {
    * Limpia todo el canvas
    */
   public clear(): void {
+    if(!this.ctx) return;
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
@@ -78,7 +100,7 @@ class CanvasRenderer {
   /**
    * Obtiene el contexto 2D del canvas (para operaciones avanzadas)
    */
-  public getContext(): CanvasRenderingContext2D {
+  public getContext(): CanvasRenderingContext2D | undefined {
     return this.ctx;
   }
 

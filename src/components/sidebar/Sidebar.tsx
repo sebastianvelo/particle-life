@@ -1,54 +1,57 @@
-import engine from "@game/Game";
-import getParticleGroupsView from "@game/transformer/particleGroupsViewTransformer";
-import { useState } from "react";
-import NewWorldButton from "./buttons/NewWorldButton";
-import ToggleGameStatusButton from "./buttons/ToggleGameStatusButton";
-import ToggleSidebarButton from "./buttons/ToggleSidebarButton";
-import { ParticleGroupContainerViewProps } from "./particle-group/ParticleGroupContainer";
-import ParticleGroupsContainer from "./particle-groups/ParticleGroupsContainer";
-import InfoContainer from "./wordings/InfoContainer";
-import NoteContainer from "./wordings/NoteContainer";
+import Engine from "@game/core/Engine";
+import SidebarHeader from "components/sidebar/SidebarHeader";
+import React from 'react';
+import DesktopControlPanel from '../controls/DesktopControlPanel';
+import ParticleGroup, { ParticleGroupContainerViewProps } from '../particle-group/ParticleGroup';
 
-const Sidebar = () => {
-    const [particleGroups, setParticleGroups] = useState<ParticleGroupContainerViewProps[]>(getParticleGroupsView());
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+interface SidebarProps {
+    engine: Engine;
+    isOpen: boolean;
+    particleGroups: ParticleGroupContainerViewProps[];
+    expandedGroups: Set<number>;
+    hoveredRule: string | null;
+    isPlaying: boolean;
+    onToggleGroupExpansion: (index: number) => void;
+    onRuleHover: (ruleId: string | null) => void;
+    onTogglePlayPause: () => void;
+    onReset: () => void;
+}
 
-    const handleReset = () => {
-        engine.restart();
-        setParticleGroups([...getParticleGroupsView()]);
-    };
-
-    const handleGroupChange = () => {
-        setParticleGroups([...getParticleGroupsView()]);
-    };
-
-    const toggleSidebar = () => {
-        setIsOpen((prev) => !prev);
-    };
-
+const Sidebar: React.FC<SidebarProps> = ({
+    isOpen,
+    particleGroups,
+    expandedGroups,
+    hoveredRule,
+    isPlaying,
+    onToggleGroupExpansion,
+    onRuleHover,
+    onTogglePlayPause,
+    onReset,
+    engine
+}) => {
     return (
-        <>
-            <ToggleSidebarButton onClick={toggleSidebar} isOpen={isOpen} />
-            <div className={`fixed left-0 top-0 h-full bg-zinc-900/80 px-4 py-8 shadow-lg overflow-y-auto transition-all duration-300 z-40 sm:w-96 ${isOpen ? "block" : "hidden sm:block"}`}>
-                <div className="space-y-4">
-                    <h1 className="text-3xl font-bold text-white">Particle Life</h1>
-                    <InfoContainer />
-                    <ParticleGroupsContainer
-                        particleGroups={particleGroups}
-                        handleGroupChange={handleGroupChange}
+        <div className={`fixed left-0 top-0 h-full w-96 bg-black/80 backdrop-blur-xl border-r border-white/10 transform transition-all duration-500 ease-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} z-30 shadow-2xl`}>
+            <SidebarHeader />
+            <div className="flex-1 overflow-y-auto p-6 space-y-4 scrollbar">
+                {particleGroups.map((group, groupIndex) => (
+                    <ParticleGroup
+                        engine={engine}
+                        key={group.name}
+                        group={group}
+                        groupIndex={groupIndex}
+                        isExpanded={expandedGroups.has(groupIndex)}
+                        hoveredRule={hoveredRule}
+                        onToggleExpansion={() => onToggleGroupExpansion(groupIndex)}
+                        onRuleHover={onRuleHover}
                     />
-                    <NoteContainer />
-                    <div className="flex">
-                        <ToggleGameStatusButton />
-                        <NewWorldButton handleReset={handleReset} />
-                    </div>
-                </div>
+                ))}
             </div>
-            <div className="fixed sm:hidden flex bottom-0 w-full h-20">
-                <ToggleGameStatusButton />
-                <NewWorldButton handleReset={handleReset} />
-            </div>
-        </>
+            <DesktopControlPanel
+                isPlaying={isPlaying}
+                onTogglePlayPause={onTogglePlayPause}
+                onReset={onReset}
+            />
+        </div>
     );
 };
 

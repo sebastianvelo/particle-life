@@ -1,14 +1,58 @@
-import engine from "@game/Game";
-import Sidebar from "./components/sidebar/Sidebar";
+import Footer from 'components/footer/Footer';
+import React from 'react';
+import AnimatedBackground from './components/background/AnimatedBackground';
+import GameCanvas from './components/canvas/GameCanvas';
+import MobileControlPanel from './components/controls/MobileControlPanel';
+import ToggleButton from './components/controls/ToggleButton';
+import Sidebar from './components/sidebar/Sidebar';
+import { useParticleSimulation } from './hooks/useParticleSimulation';
+import { useUIState } from './hooks/useUIState';
 import "./output.css";
 
-engine.start();
+const App: React.FC = () => {
+  const {
+    particleGroups,
+    isPlaying,
+    handleReset,
+    togglePlayPause,
+    canvasReady,
+    engine
+  } = useParticleSimulation();
 
-export default function App() {
+  const {
+    isOpen,
+    expandedGroups,
+    hoveredRule,
+    toggleSidebar,
+    toggleGroupExpansion,
+    setRuleHover
+  } = useUIState();
 
   return (
-    <div className="App">
-      <Sidebar />
+    <div className="h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 relative overflow-hidden">
+      <AnimatedBackground />
+      <GameCanvas isOpen={isOpen} canvasReady={canvasReady}  />
+      <ToggleButton isOpen={isOpen} onToggle={toggleSidebar} />
+      <MobileControlPanel
+        isPlaying={isPlaying}
+        onTogglePlayPause={togglePlayPause}
+        onReset={handleReset}
+      />
+      <Sidebar
+        isOpen={isOpen}
+        particleGroups={particleGroups}
+        expandedGroups={expandedGroups}
+        hoveredRule={hoveredRule}
+        isPlaying={isPlaying}
+        onToggleGroupExpansion={toggleGroupExpansion}
+        onRuleHover={setRuleHover}
+        onTogglePlayPause={togglePlayPause}
+        onReset={handleReset}
+        engine={engine}
+      />
+      <Footer />
     </div>
   );
-}
+};
+
+export default App;

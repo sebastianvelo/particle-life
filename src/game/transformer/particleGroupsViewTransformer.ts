@@ -1,4 +1,4 @@
-import engine from "@game/Game";
+import Engine from "@game/core/Engine";
 import { ParticleGroup } from "@game/particle/ParticleGroupManager";
 
 const transformParticleGroup = (group: ParticleGroup) => {
@@ -38,6 +38,6 @@ const transformParticleGroup = (group: ParticleGroup) => {
 const transformAllParticleGroups = (groups: ParticleGroup[]) =>
     groups.map(transformParticleGroup);
 
-const getParticleGroupsView = () => transformAllParticleGroups(engine.getGroupManager().getParticleGroups());
+const getParticleGroupsView = (engine: Engine) => transformAllParticleGroups(engine.getGroupManager().getParticleGroups());
 
 export default getParticleGroupsView;

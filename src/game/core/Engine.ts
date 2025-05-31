@@ -9,19 +9,34 @@ class Engine {
   private physicsEngine: PhysicsEngine;
   private status: boolean;
   private animationId: number | null;
+  private isInitialized: boolean;
 
   constructor() {
-    this.renderer = new CanvasRenderer(config);
+    this.renderer = new CanvasRenderer(config); // Fallback para compatibilidad
     this.groupManager = new ParticleGroupManager();
     this.physicsEngine = new PhysicsEngine();
     this.status = true;
     this.animationId = null;
+    this.isInitialized = false;
+  }
+
+  /**
+   * Establece el canvas para el engine (método para React)
+   */
+  public setCanvas(canvas: HTMLCanvasElement): void {
+    this.renderer = new CanvasRenderer(config, canvas);
+    this.isInitialized = true;
   }
 
   /**
    * Inicializa el motor y comienza el loop de animación
    */
   public start(): void {
+    if (!this.isInitialized) {
+      console.warn('Engine not initialized. Use setCanvas() first or ensure canvas element exists.');
+      return;
+    }
+    
     this.groupManager.fillParticleGroups();
     this.gameLoop();
   }
@@ -52,9 +67,21 @@ class Engine {
   }
 
   /**
+   * Obtiene si el engine está inicializado
+   */
+  public getIsInitialized(): boolean {
+    return this.isInitialized;
+  }
+
+  /**
    * Reinicia el motor con nuevos grupos de partículas
    */
   public restart(): void {
+    if (!this.isInitialized) {
+      console.warn('Engine not initialized. Cannot restart.');
+      return;
+    }
+    
     this.groupManager.fillParticleGroups();
     if (!this.status) {
       this.start();
@@ -66,16 +93,15 @@ class Engine {
    */
   private gameLoop(): void {
     const update = () => {
-      // Actualizar lógica solo si el juego está activo
+      if (!this.isInitialized) return;
+      
       if (this.status) {
         const groups = this.groupManager.getParticleGroups();
         this.physicsEngine.updatePhysics(groups);
       }
 
-      // Renderizar siempre (para mostrar estado pausado)
       this.render();
 
-      // Continuar el loop
       this.animationId = requestAnimationFrame(update);
     };
 
@@ -86,10 +112,9 @@ class Engine {
    * Renderiza todo el frame actual
    */
   private render(): void {
-    // Limpiar canvas
-    this.renderer.clear();
+    if (!this.isInitialized) return;
     
-    // Dibujar fondo
+    this.renderer.clear();
     this.renderer.drawRectangle(
       0, 
       0, 
@@ -98,7 +123,6 @@ class Engine {
       config.canvas.height
     );
 
-    // Dibujar todas las partículas
     this.renderParticles();
   }
 
@@ -146,7 +170,7 @@ class Engine {
   } {
     return {
       isRunning: this.status,
-      canvasDimensions: this.renderer.getDimensions(),
+      canvasDimensions: this.isInitialized ? this.renderer.getDimensions() : { width: 0, height: 0 },
       groupStats: this.groupManager.getGroupsStats()
     };
   }
@@ -155,6 +179,8 @@ class Engine {
    * Actualiza la configuración del canvas en tiempo real
    */
   public updateCanvasSize(width: number, height: number): void {
+    if (!this.isInitialized) return;
+    
     const canvas = this.renderer.getCanvas();
     canvas.width = width;
     canvas.height = height;
