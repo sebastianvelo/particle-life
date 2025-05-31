@@ -39,6 +39,8 @@ const useParticleSimulation = () => {
         return val;
     }, []);
 
+    const getColors = useCallback(() => { return engine.getGroupManager().getColors(); }, []);
+
     const canvasReady = useCallback((canvasRef: React.RefObject<HTMLCanvasElement>) => {
         if (canvasRef.current) {
             engine.setCanvas(canvasRef.current);
@@ -59,7 +61,8 @@ const useParticleSimulation = () => {
         handleGroupChange,
         togglePlayPause,
         engine,
-        canvasReady
+        canvasReady,
+        getColors
     };
 };
 

@@ -1,29 +1,39 @@
 import Footer from "components/footer/Footer";
+import { createGradientFromColors } from "utils/ColorUtils";
 import AnimatedBackground from "./components/background/AnimatedBackground";
 import ToggleSidebarButton from "./components/buttons/ToggleSidebarButton";
 import GameCanvas from "./components/canvas/GameCanvas";
 import MobileControlPanel from "./components/controls/MobileControlPanel";
 import Sidebar from "./components/sidebar/Sidebar";
 import useParticleSimulation from "./hooks/useParticleSimulation";
-import useUIState from "./hooks/useUIState";
+import useSidebar from "./hooks/useSidebar";
 import "./output.css";
 
+
 const App: React.FC = () => {
-  const { particleGroups, isPlaying, handleReset, togglePlayPause, canvasReady, updateGroupRule } = useParticleSimulation();
-  const { isOpen, expandedGroups, toggleSidebar, toggleGroupExpansion } = useUIState();
+  const { isOpen, toggle } = useSidebar();
+  const { particleGroups, getColors, isPlaying, handleReset, togglePlayPause, canvasReady, updateGroupRule } = useParticleSimulation();
+
+  const colors: string[] = getColors();
+
+  const gradientStyle: React.CSSProperties = {
+    background: createGradientFromColors(colors, 45),
+    height: '100vh',
+    position: 'relative' as const,
+    overflow: 'hidden' as const,
+    transition: ""
+  };
 
   return (
-    <div className="h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 relative overflow-hidden">
+    <div style={gradientStyle}>
       <AnimatedBackground />
-      <GameCanvas isOpen={isOpen} canvasReady={canvasReady} />
-      <ToggleSidebarButton isOpen={isOpen} onToggle={toggleSidebar} />
+      <GameCanvas sidebarIsOpen={isOpen} canvasReady={canvasReady} />
+      <ToggleSidebarButton isOpen={isOpen} onToggle={toggle} />
       <MobileControlPanel isPlaying={isPlaying} onTogglePlayPause={togglePlayPause} onReset={handleReset} />
       <Sidebar
         isOpen={isOpen}
         particleGroups={particleGroups}
-        expandedGroups={expandedGroups}
         isPlaying={isPlaying}
-        onToggleGroupExpansion={toggleGroupExpansion}
         onTogglePlayPause={togglePlayPause}
         onReset={handleReset}
         updateGroupRule={updateGroupRule}

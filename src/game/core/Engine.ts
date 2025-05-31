@@ -204,7 +204,6 @@ class Engine {
    * Método de utilidad para actualizar reglas entre grupos
    */
   public updateGroupRule(fromColor: string, toColor: string, newValue: number): number {
-    console.log(fromColor, toColor, newValue)
     return this.groupManager.updateParticleGroupRules(fromColor, toColor, newValue);
   }
 }

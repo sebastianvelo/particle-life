@@ -3,7 +3,7 @@ import FooterIcon from "./common/FooterIcon";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="hidden lg:block 2xl:sticky border-t border-secondary-500/20 bottom-0 bg-black/80 backdrop-blur-xl text-secondary-100 py-4">
+    <footer className="hidden lg:block 2xl:sticky border-t border-secondary-500/20 bottom-0 bg-black/80 backdrop-blur-xl text-secondary-100 py-4 z-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <a className="font-bold mb-4 md:mb-0 text-primary-100" href="https://sebastian-velo.web.app/">

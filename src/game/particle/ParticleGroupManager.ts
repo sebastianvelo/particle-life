@@ -63,6 +63,10 @@ class ParticleGroupManager {
         });
     }
 
+    public getColors(): string[] {
+        return this.particleGroups.map(group => group.color);
+    }
+
     public initializeRules(): void {
         const groups = this.getParticleGroups();
         const rulesMatrix = ParticleRuleFactory.createRulesMatrix(groups);
@@ -85,6 +89,7 @@ class ParticleGroupManager {
 
         // Aplicar nuevas reglas...
     }
+
     /**
      * Crea una nueva instancia de grupo de partículas
      */
@@ -126,7 +131,6 @@ class ParticleGroupManager {
         for (let i = 0; i < totalGroups; i++) {
             let color = RandomUtils.randomColor();
 
-            // Asegurar que el color sea único
             while (usedColors.has(color)) {
                 color = RandomUtils.randomColor();
             }
@@ -135,7 +139,6 @@ class ParticleGroupManager {
             groups.push(this.createDefaultParticleGroup(color));
         }
 
-        // Ordenar por color para consistencia
         return groups.sort((a, b) => a.color.localeCompare(b.color));
     }
 
@@ -143,7 +146,7 @@ class ParticleGroupManager {
      * Obtiene todos los grupos de partículas
      */
     public getParticleGroups(): ParticleGroup[] {
-        return [...this.particleGroups]; // Retorna una copia para evitar mutaciones externas
+        return [...this.particleGroups];
     }
 
     /**
@@ -226,18 +229,13 @@ class ParticleGroupManager {
      */
     public getGroupRules(color: string): ParticleRules | undefined {
         const group = this.getParticleGroupByColor(color);
-        return group ? { ...group.rules } : undefined; // Retorna copia
+        return group ? { ...group.rules } : undefined;
     }
 
     /**
      * Obtiene estadísticas de los grupos
      */
-    public getGroupsStats(): {
-        totalGroups: number;
-        totalParticles: number;
-        groupsWithRules: number;
-        averageGroupSize: number;
-    } {
+    public getGroupsStats(): { totalGroups: number; totalParticles: number; groupsWithRules: number; averageGroupSize: number; } {
         const totalGroups = this.particleGroups.length;
         const totalParticles = this.particleGroups.reduce((sum, group) => sum + group.items.length, 0);
         const groupsWithRules = this.particleGroups.filter(group => Object.keys(group.rules).length > 0).length;

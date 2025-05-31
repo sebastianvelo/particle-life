@@ -14,7 +14,7 @@ const ToggleSidebarButton: React.FC<ToggleSidebarButtonProps> = ({ onToggle, isO
                 <ChevronRight className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
             )}
         </button>
-    )
+    );
 };
 
 export default ToggleSidebarButton;

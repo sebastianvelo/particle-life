@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
 
 interface GameCanvasProps {
-    isOpen: boolean;
+    sidebarIsOpen: boolean;
     canvasReady: (canvasRef: React.RefObject<HTMLCanvasElement>) => () => void;
 }
 
-const GameCanvas: React.FC<GameCanvasProps> = ({ isOpen, canvasReady }) => {
+const GameCanvas: React.FC<GameCanvasProps> = ({ sidebarIsOpen, canvasReady }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -13,8 +13,8 @@ const GameCanvas: React.FC<GameCanvasProps> = ({ isOpen, canvasReady }) => {
     }, []);
 
     return (
-        <div className={`flex justify-center items-start lg:items-center min-h-screen transition-all duration-500 ease-out ${isOpen ? "ml-96" : "ml-0"}`}>
-            <canvas ref={canvasRef} id="life" className="border-2 border-white/20 shadow-2xl rounded-lg backdrop-blur-sm" />
+        <div className={`shadow-xl flex justify-center items-start lg:items-center min-h-screen transition-all duration-500 ease-out ${sidebarIsOpen ? "ml-96" : "ml-0"}`}>
+            <canvas ref={canvasRef} id="life" className="shadow-2xl lg:rounded-lg backdrop-blur-sm" />
         </div>
     );
 };

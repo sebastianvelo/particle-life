@@ -1,10 +1,6 @@
 import { Info, Zap } from "lucide-react";
 
-interface SidebarHeaderProps {
-
-}
-
-const SidebarHeader: React.FC<SidebarHeaderProps> = () => {
+const SidebarHeader: React.FC = () => {
     return (
         <div className="p-4 border-b border-white/10">
             <div className="flex justify-end items-center gap-3 mb-4">
@@ -17,14 +13,13 @@ const SidebarHeader: React.FC<SidebarHeaderProps> = () => {
             <div className="bg-white/5 rounded-xl p-4 border border-white/10">
                 <div className="flex items-center gap-2 mb-2">
                     <Info className="w-4 h-4 text-blue-400" />
-                    <span className="text-sm font-medium text-white">Simulation Info</span>
+                    <span className="text-sm font-medium text-white">Info</span>
                 </div>
-                <p className="text-xs text-gray-300">
-                    Configure particle interactions below. Particles can attract 🧲 or repel ❌ each other based on color groups.
+                <p className="text-xs text-gray-300 flex">
+                    Particles can attract or repel each other based on color groups. Configure particle interactions below. 
                 </p>
             </div>
         </div>
-
     );
 }
 

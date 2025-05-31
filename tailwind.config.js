@@ -2,8 +2,6 @@ const defaultColors = require('tailwindcss/colors')
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-  mode: 'jit',
-  darkMode: 'class',
   content: [
     './src/**/*.{js,ts,jsx,tsx,json}',
     './public/index.html',

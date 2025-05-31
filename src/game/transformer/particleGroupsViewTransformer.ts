@@ -1,6 +1,6 @@
 import Engine from "@game/core/Engine";
 import { ParticleGroup } from "@game/particle/ParticleGroupManager";
-import { RuleViewProps } from "components/particle-group/rule/InteractionRule";
+import { RuleViewProps } from "components/particle-group/rules/rule/InteractionRule";
 
 interface ParticleGroupInfoProps {
     mass: string;

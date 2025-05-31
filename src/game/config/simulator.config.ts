@@ -18,7 +18,7 @@ export type SimulatorConfig = {
 const config: SimulatorConfig = {
     particleGroups: {
         size: 4,
-        length: 850
+        length: 800
     },
     particle: {
         generateId: () => (Date.now() * 100).toString(16),
