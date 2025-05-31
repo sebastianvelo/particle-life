@@ -1,27 +1,31 @@
 import Engine from "@game/core/Engine";
 import { ParticleGroup } from "@game/particle/ParticleGroupManager";
+import { RuleViewProps } from "components/particle-group/rule/InteractionRule";
 
-const transformParticleGroup = (group: ParticleGroup) => {
+interface ParticleGroupInfoProps {
+    mass: string;
+    velocity: string;
+};
+
+export interface ParticleGroupContainerViewProps {
+    name: string;
+    info: ParticleGroupInfoProps;
+    rules: RuleViewProps[];
+}
+
+const transformParticleGroup = (group: ParticleGroup): ParticleGroupContainerViewProps => {
     const name = group.color;//.charAt(0).toUpperCase() + group.color.slice(1);
     const mass = group.mass.toFixed(2);
     const velocity = group.velocityDecay.toFixed(2);
 
-    const rules = Object.entries(group.rules).map(([targetColor, rule]) => {
-        const gValue = rule.g;
-        const gStr = gValue.toFixed(2);
-
-        const interaction =
-            gValue < 0
-                ? { emoji: "🧲" as const, word: "attracts" as const }
-                : { emoji: "❌" as const, word: "repels" as const };
-
-        const badge = `${interaction.emoji}, ${name} ${interaction.word} ${targetColor}`;
+    const rules: RuleViewProps[] = Object.entries(group.rules).map(([targetColor, rule]) => {
+        const g = +rule.g.toFixed(2);
+        const interaction = g < 0 ? "attracts" : "repels";
 
         return {
             color: targetColor,
-            g: gStr,
+            g: g,
             interaction,
-            badge,
         };
     });
 

@@ -1,9 +1,8 @@
 import Engine from "@game/core/Engine";
-import getParticleGroupsView from "@game/transformer/particleGroupsViewTransformer";
-import { ParticleGroupContainerViewProps } from 'components/particle-group/ParticleGroup';
+import getParticleGroupsView, { ParticleGroupContainerViewProps } from "@game/transformer/particleGroupsViewTransformer";
 import { useCallback, useState } from 'react';
 
-export const useParticleSimulation = () => {
+const useParticleSimulation = () => {
     const [particleGroups, setParticleGroups] = useState<ParticleGroupContainerViewProps[]>([]);
     const [isPlaying, setIsPlaying] = useState(true);
     const [engine] = useState(new Engine());
@@ -63,3 +62,5 @@ export const useParticleSimulation = () => {
         canvasReady
     };
 };
+
+export default useParticleSimulation;

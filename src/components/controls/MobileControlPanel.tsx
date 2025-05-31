@@ -1,6 +1,5 @@
-import ResetButton, { ResetButtonProps } from 'components/buttons/ResetButton';
-import TogglePlayPauseButton, { TogglePlayPauseButtonProps } from 'components/buttons/TogglePlayPauseButton';
-import React from 'react';
+import ResetButton, { ResetButtonProps } from "components/buttons/ResetButton";
+import TogglePlayPauseButton, { TogglePlayPauseButtonProps } from "components/buttons/TogglePlayPauseButton";
 
 interface MobileControlPanelProps extends TogglePlayPauseButtonProps, ResetButtonProps { }
 

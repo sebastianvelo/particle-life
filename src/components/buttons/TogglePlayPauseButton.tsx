@@ -1,5 +1,4 @@
 import { Pause, Play } from "lucide-react";
-import React from "react";
 
 export interface TogglePlayPauseButtonProps {
   isPlaying: boolean;

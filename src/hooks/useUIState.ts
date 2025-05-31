@@ -1,9 +1,8 @@
 import { useState, useCallback } from 'react';
 
-export const useUIState = () => {
+const useUIState = () => {
     const [isOpen, setIsOpen] = useState<boolean>(true);
     const [expandedGroups, setExpandedGroups] = useState<Set<number>>(new Set([]));
-    const [hoveredRule, setHoveredRule] = useState<string | null>(null);
 
     const toggleSidebar = useCallback(() => {
         setIsOpen(prev => !prev);
@@ -21,16 +20,12 @@ export const useUIState = () => {
         });
     }, []);
 
-    const setRuleHover = useCallback((ruleId: string | null) => {
-        setHoveredRule(ruleId);
-    }, []);
-
     return {
         isOpen,
         expandedGroups,
-        hoveredRule,
         toggleSidebar,
         toggleGroupExpansion,
-        setRuleHover
     };
 };
+
+export default useUIState;
