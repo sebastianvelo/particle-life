@@ -20,7 +20,7 @@ const RuleContainer = (props: RuleContainerProps) => {
 
     return (
         <li className="grid grid-cols-5 align-center justify-center">
-            <div className="col-span-2 grid grid-cols-2 justify-between cursor-pointer hover:opacity-90 relative cursor-help">
+            <div className="col-span-2 grid grid-cols-2 justify-between hover:opacity-90 relative cursor-help">
                 <div className="h-full w-full flex justify-center items-center group" style={{ backgroundColor: props.color }}>
                     <p className="bg-zinc-900/90 rounded-full p-1">{props.interaction.emoji}</p>
                     <RuleInfoBadge content={props.badge} />

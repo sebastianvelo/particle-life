@@ -1,7 +1,7 @@
-import { IParticleGroup } from "@game/particle-group/ParticleGroup";
-import getParticleGroups from "@game/particle-group/particleGroups";
+import engine from "@game/Game";
+import { ParticleGroup } from "@game/particle/ParticleGroupManager";
 
-const transformParticleGroup = (group: IParticleGroup) => {
+const transformParticleGroup = (group: ParticleGroup) => {
     const name = group.color;//.charAt(0).toUpperCase() + group.color.slice(1);
     const mass = group.mass.toFixed(2);
     const velocity = group.velocityDecay.toFixed(2);
@@ -35,9 +35,9 @@ const transformParticleGroup = (group: IParticleGroup) => {
     };
 };
 
-const transformAllParticleGroups = (groups: IParticleGroup[]) =>
+const transformAllParticleGroups = (groups: ParticleGroup[]) =>
     groups.map(transformParticleGroup);
 
-const getParticleGroupsView = () => transformAllParticleGroups(getParticleGroups());
+const getParticleGroupsView = () => transformAllParticleGroups(engine.getGroupManager().getParticleGroups());
 
 export default getParticleGroupsView;

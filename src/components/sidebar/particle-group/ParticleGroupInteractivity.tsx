@@ -1,4 +1,4 @@
-import RuleContainer, { RuleContainerProps, RuleViewProps } from "./rule/RuleContainer";
+import RuleContainer, { RuleViewProps } from "./rule/RuleContainer";
 
 interface ParticleGroupInteractivityProps {
     ownerColor: string;

@@ -1,11 +1,11 @@
+import engine from "@game/Game";
 import { useState } from "react";
-import { getStatus, toggleGameStatus } from "@game/ParticleSimulator";
 
 const ToggleGameStatusButton = () => {
-    const [isActive, setIsActive] = useState<boolean>(getStatus());
+    const [isActive, setIsActive] = useState<boolean>(engine.getStatus());
 
     const handleGameStatus = () => {
-        toggleGameStatus();
+        engine.toggleStatus();
         setIsActive(!isActive);
     }
 

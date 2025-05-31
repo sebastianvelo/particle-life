@@ -1,6 +1,6 @@
-import init from "@game/initialSettings";
+import engine from "@game/Game";
+import getParticleGroupsView from "@game/transformer/particleGroupsViewTransformer";
 import { useState } from "react";
-import getParticleGroupsView from "../../game/transformer/particleGroupsViewTransformer";
 import NewWorldButton from "./buttons/NewWorldButton";
 import ToggleGameStatusButton from "./buttons/ToggleGameStatusButton";
 import ToggleSidebarButton from "./buttons/ToggleSidebarButton";
@@ -14,7 +14,7 @@ const Sidebar = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const handleReset = () => {
-        init();
+        engine.restart();
         setParticleGroups([...getParticleGroupsView()]);
     };
 

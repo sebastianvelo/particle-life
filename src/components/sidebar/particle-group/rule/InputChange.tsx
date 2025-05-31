@@ -1,6 +1,5 @@
+import engine from "@game/Game";
 import { useEffect, useState } from "react";
-import { updateParticleGroupRules } from "@game/particle-group/particleGroups";
-
 interface InputChangeProps {
     value: number;
     ownerColor: string;
@@ -17,7 +16,7 @@ const InputChange = ({ value, ownerColor, targetColor, onValueChange }: InputCha
 
     const handleChange = (e: any) => {
         const newValue = +e.target.value;
-        updateParticleGroupRules(ownerColor, targetColor, newValue);
+        engine.updateGroupRule(ownerColor, targetColor, newValue);
         setInternalValue(newValue);
         onValueChange(newValue);
     };

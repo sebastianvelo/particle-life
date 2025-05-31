@@ -1,4 +1,21 @@
-const config = {
+export type SimulatorConfig = {
+    particleGroups: {
+        size: number;
+        length: number;
+    };
+    particle: {
+        generateId: () => string;
+        minSize: number;
+    };
+    canvas: {
+        id: string;
+        width: number;
+        height: number;
+        bgColor: string;
+    };
+}
+
+const config: SimulatorConfig = {
     particleGroups: {
         size: 4,
         length: 850

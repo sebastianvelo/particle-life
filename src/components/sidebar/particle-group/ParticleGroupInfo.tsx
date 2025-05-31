@@ -1,4 +1,3 @@
-
 export interface ParticleGroupInfoProps {
     mass: string;
     velocity: string;
