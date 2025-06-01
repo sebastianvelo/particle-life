@@ -17,7 +17,7 @@ export type SimulatorConfig = {
 
 const config: SimulatorConfig = {
     particleGroups: {
-        size: 4,
+        size: 3,
         length: 800
     },
     particle: {

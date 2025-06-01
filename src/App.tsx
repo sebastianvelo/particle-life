@@ -1,9 +1,6 @@
-import Footer from "components/footer/Footer";
+import Footer from "layout/footer/Footer";
+import Main from "layout/main/Main";
 import { createGradientFromColors } from "utils/ColorUtils";
-import AnimatedBackground from "./components/background/AnimatedBackground";
-import ToggleSidebarButton from "./components/buttons/ToggleSidebarButton";
-import GameCanvas from "./components/canvas/GameCanvas";
-import MobileControlPanel from "./components/controls/MobileControlPanel";
 import Sidebar from "./components/sidebar/Sidebar";
 import useParticleSimulation from "./hooks/useParticleSimulation";
 import useSidebar from "./hooks/useSidebar";
@@ -26,15 +23,13 @@ const App: React.FC = () => {
 
   return (
     <div style={gradientStyle}>
-      <AnimatedBackground />
-      <GameCanvas sidebarIsOpen={isOpen} canvasReady={canvasReady} />
-      <ToggleSidebarButton isOpen={isOpen} onToggle={toggle} />
-      <MobileControlPanel isPlaying={isPlaying} onTogglePlayPause={togglePlayPause} onReset={handleReset} />
+      <Main sidebarIsOpen={isOpen} canvasReady={canvasReady} />
       <Sidebar
-        isOpen={isOpen}
         particleGroups={particleGroups}
+        isOpen={isOpen}
         isPlaying={isPlaying}
         onTogglePlayPause={togglePlayPause}
+        onToggleSidebar={toggle}
         onReset={handleReset}
         updateGroupRule={updateGroupRule}
       />
