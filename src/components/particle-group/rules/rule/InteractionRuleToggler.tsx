@@ -19,7 +19,8 @@ const InteractionRuleToggler: React.FC<InteractionRuleTogglerProps> = ({ rule, g
             <div className="w-5 h-5 rounded border border-white/30 flex items-center justify-center text-xs" style={style}></div>
             <div className="flex-1">
                 <div className="text-sm text-white font-medium flex space-x-1 items-center">
-                    {rule.g > 0 ? repel : magnet} <span>{rule.interaction} {rule.color === groupName ? "itself" : rule.color}</span>
+                    {rule.g > 0 ? repel : magnet}
+                    <span>{rule.interaction} {rule.color === groupName ? "itself" : rule.color}</span>
                 </div>
                 <div className="text-xs text-gray-400">
                     Force: {rule.g}

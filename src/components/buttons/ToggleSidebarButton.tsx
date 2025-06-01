@@ -10,9 +10,9 @@ const ToggleSidebarButton: React.FC<ToggleSidebarButtonProps> = ({ onToggle, isO
     const chevronClassName = "w-5 h-5 text-white group-hover:scale-110 transition-transform";
     const desktop = "hidden lg:block";
     const mobile = "lg:hidden";
-    
+
     return (
-        <button className={`${className} z-50 border border-white/20 rounded-md p-2 hover:bg-white/20 transition-all duration-300 shadow-lg group ${!isOpen ? "bg-black/50" : "bg-white/10 backdrop-blur-md"}`} onClick={onToggle}>
+        <button className={`${className} z-50 border border-white/20 rounded-md p-2 hover:bg-white/20 transition-all duration-300 shadow-lg group ${!isOpen ? "bg-black/50 ml-0" : "bg-white/10 backdrop-blur-md lg:ml-72"}`} onClick={onToggle}>
             {isOpen ? (
                 <>
                     <ChevronDown className={`${chevronClassName} ${desktop}`} />

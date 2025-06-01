@@ -1,11 +1,11 @@
-import { Info, Zap } from "lucide-react";
+import { Atom, Info, Zap } from "lucide-react";
 
 const SidebarHeader: React.FC = () => {
     return (
-        <div className="p-4 border-b border-white/10">
-            <div className="flex justify-end items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                    <Zap className="w-5 h-5 text-white" />
+        <div className="p-4 border-b border-white/10 space-y-4">
+            <div className="flex justify-start items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-slate-700 to-indigo-500 rounded-full flex items-center justify-center">
+                    <Atom className="w-5 h-5 text-white" />
                 </div>
                 <h1 className="text-2xl font-bold text-white">Particle Life</h1>
             </div>

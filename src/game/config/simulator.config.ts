@@ -28,7 +28,7 @@ const config: SimulatorConfig = {
         id: "life",
         width: window.innerWidth > 500 ? window.innerWidth * 0.5 : window.innerWidth,
         height: window.innerWidth > 500 ? window.innerHeight * 0.8 : window.innerHeight * 0.9,
-        bgColor: "#000"
+        bgColor: "rgba(0, 0, 0, 0.8)"
     }
 };
 

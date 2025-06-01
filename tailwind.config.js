@@ -15,7 +15,7 @@ module.exports = {
         accent: defaultColors.blue
       },
       animation: {
-        "gradient-x": "gradientX 5s ease infinite",
+        "gradient-x": "gradientX 10s ease-in-out infinite",
       },
       keyframes: {
         gradientX: {
