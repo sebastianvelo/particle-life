@@ -1,6 +1,6 @@
 const AnimatedBackground: React.FC = () => {
     return (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none bg-slate-950/70 backdrop-blur-xl w-full h-full">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none bg-black/50 backdrop-blur-xl w-full h-full">
             {[...Array(50)].map((_, i) => (
                 <div
                     key={i}

@@ -6,7 +6,7 @@ export interface ResetButtonProps {
 
 const ResetButton: React.FC<ResetButtonProps> = ({ onReset }) => {
     return (
-        <button onClick={onReset} className="flex-1 bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white py-3 px-4 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
+        <button onClick={onReset} className="flex-1 bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-200 py-3 px-4 rounded-xl font-medium flex items-center justify-center gap-2 shadow-lg">
             <RotateCcw className="w-4 h-4" />
             Reset
         </button>

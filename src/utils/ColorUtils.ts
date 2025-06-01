@@ -7,11 +7,13 @@ export const createGradientFromColors = (colors: string[], angle: number = 135):
         return colors[0]; // color sólido si solo hay uno
     }
 
-    // Calcular posiciones equidistantes para cada color
-    const colorStops = colors.map((color, index) => {
-        const position = (index / (colors.length - 1)) * 100;
-        return `${color} ${position}%`;
-    }).join(", ");
-
-    return `radial-gradient(ellipse at top left, ${colorStops})`;
+    return `linear-gradient(${angle}deg, ${colors.join(", ")})`;
 };
+
+export const gradientStyle = (colors: string[]): React.CSSProperties => ({
+    background: `${createGradientFromColors(colors, 0)} 0% 0% / 600% 600%`,
+    height: "100vh",
+    position: "relative" as const,
+    overflow: "hidden" as const,
+    transition: ""
+});
