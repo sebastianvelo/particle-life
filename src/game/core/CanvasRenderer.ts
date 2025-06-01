@@ -1,5 +1,5 @@
 // CanvasRenderer.ts (Modificado)
-import { SimulatorConfig } from "@game/config/simulator.config";
+import { CanvasConfig, SimulatorConfig } from "@game/config/simulator.config";
 import { IParticle } from "../particle/Particle";
 
 class CanvasRenderer {
@@ -29,10 +29,10 @@ class CanvasRenderer {
   /**
    * Método para establecer un nuevo canvas (útil para React)
    */
-  public setCanvas(canvas: HTMLCanvasElement, config: SimulatorConfig): void {
+  public setCanvas(canvas: HTMLCanvasElement, config: CanvasConfig): void {
     this.canvas = canvas;
-    this.canvas.width = config.canvas.width;
-    this.canvas.height = config.canvas.height;
+    this.canvas.width = config.width;
+    this.canvas.height = config.height;
 
     const context = this.canvas.getContext("2d");
     if (!context) {
@@ -46,7 +46,7 @@ class CanvasRenderer {
    * Dibuja un rectángulo en el canvas
    */
   public drawRectangle(x: number, y: number, color: string, w: number, h: number): void {
-    if(!this.ctx) return;
+    if (!this.ctx) return;
     this.ctx.fillStyle = color;
     this.ctx.fillRect(x, y, w, h);
   }
@@ -62,7 +62,7 @@ class CanvasRenderer {
    * Dibuja un círculo para una partícula
    */
   private drawCircle(particle: IParticle, size: number): void {
-    if(!this.ctx) return;
+    if (!this.ctx) return;
     this.ctx.beginPath();
     this.ctx.arc(particle.x, particle.y, size, 0, 2 * Math.PI);
     this.ctx.fillStyle = particle.color;
@@ -83,7 +83,7 @@ class CanvasRenderer {
    * Limpia todo el canvas
    */
   public clear(): void {
-    if(!this.ctx) return;
+    if (!this.ctx) return;
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
@@ -117,6 +117,14 @@ class CanvasRenderer {
   public setCanvasBorderGradient(colors: string[]): void {
     if (!this.canvas) return;
     this.canvas.style.borderImage = `linear-gradient(${colors.join(",")}) 1`;
+  }
+
+  /**
+   * Cambia el tamaño del canvas y actualiza el contexto
+   */
+  public resize(width: number, height: number): void {
+    this.canvas.width = width;
+    this.canvas.height = height;
   }
 }
 

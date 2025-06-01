@@ -10,9 +10,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: defaultColors.indigo,
+        primary: defaultColors.rose,
         secondary: defaultColors.slate,
-        accent: defaultColors.blue
+        accent: defaultColors.pink
       },
       animation: {
         "gradient-x": "gradientX 10s ease-in-out infinite",
@@ -36,18 +36,12 @@ module.exports = {
           },
           "&::-webkit-scrollbar-track": {
             borderRadius: theme("borderRadius.full"),
-            backgroundColor: theme("colors.primary.100"),
+          backgroundColor: theme("colors.primary.100"),
           },
           "&::-webkit-scrollbar-thumb": {
             borderRadius: theme("borderRadius.full"),
-            backgroundColor: theme("colors.primary.300"),
+          backgroundColor: theme("colors.primary.600"),
           },
-        },
-        ".dark .scrollbar::-webkit-scrollbar-track": {
-          backgroundColor: theme("colors.primary.950"),
-        },
-        ".dark .scrollbar::-webkit-scrollbar-thumb": {
-          backgroundColor: theme("colors.primary.900"),
         },
       }, ["responsive"]);
     }),

@@ -8,11 +8,11 @@ import "./output.css";
 
 const App: React.FC = () => {
   const { isOpen, toggle } = useSidebar();
-  const { particleGroups, getColors, isPlaying, handleReset, togglePlayPause, canvasReady, updateGroupRule } = useParticleSimulation();
-
+  const { particleGroups, getColors, isPlaying, handleReset, togglePlayPause, canvasReady, updateGroupRule, resizeCanvas } = useParticleSimulation();
+  
   return (
     <div className="animate-gradient-x" style={gradientStyle(getColors())}>
-      <Main sidebarIsOpen={isOpen} canvasReady={canvasReady} />
+      <Main sidebarIsOpen={isOpen} canvasReady={canvasReady} resizeCanvas={resizeCanvas} />
       <Sidebar
         particleGroups={particleGroups}
         isOpen={isOpen}
@@ -22,7 +22,6 @@ const App: React.FC = () => {
         onReset={handleReset}
         updateGroupRule={updateGroupRule}
       />
-      <Footer />
     </div>
   );
 };

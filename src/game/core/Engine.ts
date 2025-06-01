@@ -178,12 +178,9 @@ class Engine {
   /**
    * Actualiza la configuración del canvas en tiempo real
    */
-  public updateCanvasSize(width: number, height: number): void {
+  public resizeCanvas(width: number, height: number): void {
     if (!this.isInitialized) return;
-
-    const canvas = this.renderer.getCanvas();
-    canvas.width = width;
-    canvas.height = height;
+    this.renderer.resize(width, height);
   }
 
   /**
