@@ -23,7 +23,7 @@ export type SimulatorConfig = {
 
 const config: SimulatorConfig = {
     particleGroups: {
-        size: 3,
+        size: 4,
         length: 800
     },
     particle: {
@@ -32,8 +32,8 @@ const config: SimulatorConfig = {
     },
     canvas: {
         id: "life",
-        width: window.innerWidth > 500 ? window.innerWidth * 0.5 : window.innerWidth,
-        height: window.innerWidth > 500 ? window.innerHeight * 0.8 : window.innerHeight * 0.9,
+        width: window.innerWidth > 500 ? window.innerWidth * 0.6 : window.innerWidth,
+        height: window.innerWidth > 500 ? window.innerHeight * 0.9 : window.innerHeight * 0.9,
         bgColor: "rgba(0, 0, 0, 0.8)"
     }
 };

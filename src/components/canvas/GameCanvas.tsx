@@ -14,7 +14,7 @@ const GameCanvas: React.FC<GameCanvasProps> = ({ sidebarIsOpen, canvasReady, }) 
     }, []);
 
     return (
-        <div className={`pt-12 shadow-xl flex justify-center items-start lg:items-center min-h-screen transition-all duration-500 ease-out ${sidebarIsOpen ? "ml-96" : "ml-0"}`}>
+        <div className={`pt-12 lg:pt-0 shadow-xl flex justify-center items-start lg:items-center min-h-screen transition-all duration-500 ease-out ${sidebarIsOpen ? "ml-96" : "ml-0"}`}>
             <canvas ref={canvasRef} id="life" className="shadow-2xl lg:rounded-lg backdrop-blur-sm" />
         </div>
     );
